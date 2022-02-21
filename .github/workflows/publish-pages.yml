@@ -34,3 +34,4 @@ jobs:
           message: 'Publish to Github Pages'
           add: .
           new_branch: gh-pages
+          push: origin gh-pages --set-upstream --force
