@@ -1,11 +1,17 @@
+@mixin table-border {
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+
+@mixin title($color) {
+	text-align: center;
+	color: $color;
+}
+
 body {
 	direction: rtl;
 	font-family: Arial, Helvetica, sans-serif;
 	margin: 0;
-}
-
-p {
-	text-align: justify;
 }
 
 #app-container {
@@ -14,23 +20,22 @@ p {
 	width: fit-content;
 }
 
-h1, h6 {
-	color: green;
-	text-align: center;
+h1 {
+	@include title(green);
 }
 
 h6 {
+	@include title(#777);
 	margin: 2em 0 1em 0;
 }
 
+
 table {
-	border-collapse: collapse;
-	border: 1px solid black;
+	@include table-border;
 }
 
 th, td {
-	border-collapse: collapse;
-	border: 1px solid black;
+	@include table-border;
 	padding: 0.25em;
 	text-align: center;
 	width: 75px;
