@@ -60,7 +60,7 @@ export default {
 		@ruler-change="newRuler => ruler = newRuler"
 	/>
 
-	<h6>שים לב: הסיט מוצג לפי שיטת הרמב"ם</h6>
+	<h6>שים לב: הסיט מחושב לפי שיטת הרמב"ם</h6>
 	<UnitConversionTable
 		:units="units"
 		:ruler="ruler"
