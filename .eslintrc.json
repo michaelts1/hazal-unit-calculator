@@ -97,9 +97,31 @@
 			"error",
 			"global"
 		],
+		"vue/block-tag-newline": {
+			"singleline": "never",
+			"multiline": "always"
+		},
 		"vue/html-indent": [
 			"error",
 			"tab"
+		],
+		"vue/match-component-file-name": [
+			"error",
+			{
+				"shouldMatchCase": false
+			}
+		],
+		"vue/no-unused-properties": [
+			"error",
+			{
+				"groups": [
+					"props",
+					"data",
+					"computed",
+					"methods",
+					"setup"
+				]
+			}
 		]
 	}
 }

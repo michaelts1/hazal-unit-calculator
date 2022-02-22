@@ -1,13 +1,14 @@
 <script>
+import ConversionUIInput from './ConversionUIInput.vue'
 
 export default {
+	components: {
+		ConversionUIInput,
+	},
+
 	props: {
-		ruler: {
-			type: String,
-			default: 'גרח',
-		},
 		units: {
-			type: Array, /* { name: string, value: number }[] */
+			type: Array, /* Array.<{ name: string, value: number }> */
 			required: true,
 		},
 	},
@@ -29,6 +30,10 @@ export default {
 
 			return Math.round(num * 10_000) / 10_000 + unit
 		},
+
+		inputValueChanged(newValue) {
+			console.log(newValue)
+		}
 	},
 }
 </script>
@@ -56,4 +61,28 @@ export default {
 			</tr>
 		</tbody>
 	</table>
+
+	<div class="wrapper-container">
+		<div class="wrapper-row">
+			<ConversionUIInput
+				:unit-name="'אצבע'"
+				@value-change="inputValueChanged"
+			/>
+			<span><br> = </span>
+			<ConversionUIInput
+				:unit-name="'אצבע'"
+				@value-change="inputValueChanged"
+			/>
+		</div>
+	</div>
 </template>
+
+<style scoped>
+	.wrapper-row {
+		display: flex;
+	}
+	.wrapper-container {
+		margin: 1em auto;
+		width: fit-content;
+	}
+</style>

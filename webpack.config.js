@@ -6,11 +6,13 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 const config = {
 	mode: 'development',
+
 	entry: './src/index.js',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'index.js',
 	},
+
 	module: {
 		rules: [
 			{
@@ -23,7 +25,7 @@ const config = {
 			},
 			{
 				include: /src/,
-				test: /\.scss$/,
+				test: /\.s?css$/,
 				use: [
 					'vue-style-loader',
 					'css-loader',
@@ -32,6 +34,7 @@ const config = {
 			},
 		],
 	},
+
 	resolve: {
 		extensions: [
 			'.js',
@@ -41,6 +44,7 @@ const config = {
 			vue: path.resolve(__dirname, 'node_modules/vue/dist/vue.esm-bundler.js')
 		},
 	},
+
 	plugins: [
 		new VueLoaderPlugin(),
 		new CopyPlugin({
@@ -54,6 +58,7 @@ const config = {
 			__VUE_PROD_DEVTOOLS__: JSON.stringify(true),
 		}),
 	],
+
 	devServer: {
 		static: {
 			directory: path.join(__dirname, 'dist'),

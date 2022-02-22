@@ -9,10 +9,8 @@ export default {
 	},
 
 	props: {
-		defaultRuler: {
-			type: String,
-			default: 'גרח',
-		},
+		/* eslint-disable-next-line */ // If this useless line is removed, Vetur breaks :shrug:
+		uselessProp: undefined,
 	},
 
 	data() {
@@ -61,8 +59,5 @@ export default {
 	/>
 
 	<h6>שים לב: הסיט מחושב לפי שיטת הרמב"ם</h6>
-	<ConversionUIUnitTable
-		:units="units"
-		:ruler="ruler"
-	/>
+	<ConversionUIUnitTable :units="units" />
 </template>
