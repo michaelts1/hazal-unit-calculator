@@ -54,6 +54,13 @@ const config = {
 			__VUE_PROD_DEVTOOLS__: JSON.stringify(true),
 		}),
 	],
+	devServer: {
+		static: {
+			directory: path.join(__dirname, 'dist'),
+		},
+		compress: true,
+		port: 5500,
+	},
 }
 
 module.exports = config

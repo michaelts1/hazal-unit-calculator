@@ -8,9 +8,9 @@
 	"scripts": {
 		"lint": "eslint src",
 		"build": "webpack & sass src/scss:dist/css",
-		"watch-sass": "sass --watch src/scss:dist/css",
-		"watch-webpack": "webpack watch",
-		"watch": "run-p watch-sass watch-webpack"
+		"sass-watch": "sass --watch src/scss:dist/css",
+		"webpack-serve": "webpack serve",
+		"watch": "run-p sass-watch webpack-serve"
 	},
 	"devDependencies": {
 		"@types/firefox": "^0.0.31",

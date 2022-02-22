@@ -1,5 +1,37 @@
-#app {
-	h1 {
-		color: green
-	}
+body {
+	direction: rtl;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0;
+}
+
+p {
+	text-align: justify;
+}
+
+#app-container {
+	display: flex;
+	margin: 0 auto;
+	width: fit-content;
+}
+
+h1, h6 {
+	color: green;
+	text-align: center;
+}
+
+h6 {
+	margin: 2em 0 1em 0;
+}
+
+table {
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+
+th, td {
+	border-collapse: collapse;
+	border: 1px solid black;
+	padding: 0.25em;
+	text-align: center;
+	width: 75px;
 }
