@@ -1,11 +1,11 @@
 <script>
-import SelectRabi from './SelectRabi.vue'
-import UnitConversionTable from './UnitConversionTable.vue'
+import ConversionUIUnitTable from './ConversionUIUnitTable.vue'
+import RabiSelect from './RabiSelect.vue'
 
 export default {
 	components: {
-		SelectRabi,
-		UnitConversionTable,
+		RabiSelect,
+		ConversionUIUnitTable,
 	},
 
 	props: {
@@ -55,13 +55,13 @@ export default {
 </script>
 
 <template>
-	<SelectRabi
+	<RabiSelect
 		:default-ruler="ruler"
 		@ruler-change="newRuler => ruler = newRuler"
 	/>
 
 	<h6>שים לב: הסיט מחושב לפי שיטת הרמב"ם</h6>
-	<UnitConversionTable
+	<ConversionUIUnitTable
 		:units="units"
 		:ruler="ruler"
 	/>
