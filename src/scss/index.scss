@@ -14,12 +14,6 @@ body {
 	margin: 0;
 }
 
-#app-container {
-	display: flex;
-	margin: 0 auto;
-	width: fit-content;
-}
-
 h1 {
 	@include title(green);
 }
@@ -39,4 +33,9 @@ th, td {
 	padding: 0.25em;
 	text-align: center;
 	width: 75px;
+}
+
+#app {
+	margin: 0 auto;
+	width: fit-content;
 }

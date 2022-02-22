@@ -6,7 +6,9 @@ export default {
 			default: 'גרח',
 		},
 	},
+
 	emits: ['ruler-change'],
+
 	data() {
 		return {
 			value: this.defaultRuler,
