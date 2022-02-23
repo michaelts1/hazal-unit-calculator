@@ -21,8 +21,43 @@ export default {
 		'select-value-change',
 	],
 
+	data() {
+		return {
+			valid: true,
+		}
+	},
+
+	/*
+		Why are we using a computed property for storing the value,
+		instead of just using `this.value`?
+
+		In Vue, components get updated whenever the component data changes.
+
+			In this case, this means that when the value of the input in the
+		DOM is not the same as the value in the props (e.g. when the DOM value
+		is invalid, and thus gets ignored by the component), the DOM value will
+		get overwritten by the 'real' value from the props while updating.
+
+			Unfortunately, this will also delete the most recent user input,
+		since that input does not yet exist in the props.
+
+			To avoid this from happening, we use a computed property that is
+		always updated to be equal to the DOM value, and will only get
+		overwritten by the props value when `this.value` changes, and not when
+		any other part of the component data changes.
+	 */
+	computed: {
+		domValue() { return this.value },
+	},
+
 	methods: {
-		numberInput(str) {
+		/**
+		 * Converts string number to numbers if possible, and throws
+		 * an error if the string isn't a valid number
+		 * @param {string} str
+		 * @returns {number}
+		 */
+		numberFromString(str) {
 			const num = +str.replace(/,/g, '')
 			if (!Number.isFinite(num)) {
 				throw new TypeError('Invalid number received')
@@ -31,33 +66,35 @@ export default {
 			}
 		},
 
+		/**
+		 * Updates the validity status of the input
+		 * @param {HTMLInputElement} target
+		 * @param {msg} target
+		 */
 		changeValidity(target, msg) {
 			target.setCustomValidity(msg)
-			msg ?
-				target.classList.add('invalid') :
-				target.classList.remove('invalid')
 			target.reportValidity()
+			this.valid = msg === ''
 		},
 
+		/**
+		 * Checks the validity of the input field and emits the new
+		 * value to the parent component
+		 * @param {InputEvent} event
+		 */
 		inputValueChanged({ target }) {
 			try {
-				const value = this.numberInput(target.value)
-				if (typeof value !== 'number') return
-
+				const value = this.numberFromString(target.value)
 				this.$emit('input-value-change', {
 					unit: this.selectedUnit,
 					value,
 				})
+
 				this.changeValidity(target, '')
 			} catch (err) {
 				this.changeValidity(target, 'נא הכנס מספר')
-				console.warn('Ignoring number input due to error:', err.message)
+				console.log('Ignoring invalid number input')
 			}
-		},
-
-		selectValueChanged({ target }) {
-			console.log(target.value)
-			this.$emit('select-value-change', target.value)
 		},
 	},
 }
@@ -68,7 +105,7 @@ export default {
 		<select
 			:value="selectedUnit"
 			class="centered"
-			@change="selectValueChanged"
+			@change="({ target }) => $emit('select-value-change', target.value)"
 		>
 			<option
 				v-for="name in unitNames"
@@ -79,8 +116,8 @@ export default {
 			</option>
 		</select>
 		<input
-			:value="value"
-			class="conversion-input"
+			v-model="domValue"
+			:class="{ 'conversion-input': true, 'invalid': !valid }"
 			size="12"
 			@input="inputValueChanged"
 		>

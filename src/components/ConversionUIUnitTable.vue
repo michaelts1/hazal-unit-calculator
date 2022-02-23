@@ -1,6 +1,11 @@
 <script>
 import ConversionUIInput from './ConversionUIInput.vue'
 
+/**
+ * Round to 6 digits
+ * @param {number} num
+ * @returns {number}
+ */
 const roundNum = num => Math.round(num * 1_000_000) / 1_000_000
 
 export default {
@@ -31,6 +36,11 @@ export default {
 	},
 
 	methods: {
+		/**
+		 * Formats unit measurements
+		 * @param {number} num
+		 * @returns {string}
+		 */
 		formatNum(num) {
 			let unit = ' מטר'
 
@@ -48,24 +58,44 @@ export default {
 			return roundNum(num) + unit
 		},
 
+		/**
+		 * Converts measurements done using other units to metric
+		 * @param {number} amount Measurement calculated using non-metric units
+		 * @param {string} sourceUnit Name of the unit of measurement used
+		 */
 		convertToMeters(amount, sourceUnit) {
 			const unit = this.units.filter(({ name }) => name === sourceUnit)[0]
 			return unit.value * amount
 		},
 
+		/**
+		 * Converts metric measurements to other units
+		 * @param {number} meters
+		 * @param {string} targetUnit Name of the target unit of measurement
+		 */
 		convertFromMeters(meters, targetUnit) {
 			const unit = this.units.filter(({ name }) => name === targetUnit)[0]
 			return meters / unit.value
 		},
 
+		/**
+		 * Called after the value for one of the inputs has changed
+		 * @param {object} data
+		 * @param {number} data.value New value of the input
+		 * @param {string} data.unit Name of the unit used to measure the value
+		 */
 		inputValueChanged(data) {
-			console.log(data.unit, data.value)
 			const meters = this.convertToMeters(data.value, data.unit)
 			for (const input of this.inputs) {
 				input.value = roundNum(this.convertFromMeters(meters, input.unit))
 			}
 		},
 
+		/**
+		 * Called after the unit of measurement for one of the inputs has changed
+		 * @param {number} inputIndex Index of the input that has changed its unit
+		 * @param {string} newUnit Name of the new unit
+		 */
 		selectValueChanged(inputIndex, newUnit) {
 			const thisInput = this.inputs[inputIndex]
 			thisInput.unit = newUnit
