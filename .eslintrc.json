@@ -97,10 +97,13 @@
 			"error",
 			"global"
 		],
-		"vue/block-tag-newline": {
-			"singleline": "never",
-			"multiline": "always"
-		},
+		"vue/block-tag-newline": [
+			"error",
+			{
+				"singleline": "never",
+				"multiline": "always"
+			}
+		],
 		"vue/html-indent": [
 			"error",
 			"tab"
