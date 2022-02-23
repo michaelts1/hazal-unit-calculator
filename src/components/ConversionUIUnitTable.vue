@@ -1,7 +1,7 @@
 <script>
 import ConversionUIInput from './ConversionUIInput.vue'
 
-const roundNum = num => Math.round(num * 10_000) / 10_000
+const roundNum = num => Math.round(num * 1_000_000) / 1_000_000
 
 export default {
 	components: {
@@ -19,16 +19,15 @@ export default {
 	data() {
 		return {
 			inputs: [
-				{
-					value: 0,
-					unit: 'אצבע',
-				},
-				{
-					value: 0,
-					unit: 'טפח',
-				},
+				{ unit: 'אצבע', value: 0 },
+				{ unit: 'טפח', value: 0 },
 			],
 		}
+	},
+
+	computed: {
+		unitsFiltered() { return this.units.filter(unit => !unit.hidden) },
+		unitNames() { return this.units.map(unit => unit.name) },
 	},
 
 	methods: {
@@ -61,10 +60,20 @@ export default {
 
 		inputValueChanged(data) {
 			console.log(data.unit, data.value)
-			const value = this.convertToMeters(data.value, data.unit)
+			const meters = this.convertToMeters(data.value, data.unit)
 			for (const input of this.inputs) {
-				input.value = roundNum(this.convertFromMeters(value, input.unit))
+				input.value = roundNum(this.convertFromMeters(meters, input.unit))
 			}
+		},
+
+		selectValueChanged(inputIndex, newUnit) {
+			const thisInput = this.inputs[inputIndex]
+			thisInput.unit = newUnit
+
+			// Update value for the other input
+			const meteres = this.convertToMeters(thisInput.value, newUnit)
+			const otherInput = this.inputs[inputIndex ^ 1]
+			otherInput.value = roundNum(this.convertFromMeters(meteres, otherInput.unit))
 		},
 	},
 }
@@ -75,7 +84,7 @@ export default {
 		<thead>
 			<tr>
 				<th
-					v-for="{ name } in units"
+					v-for="{ name } in unitsFiltered"
 					:key="name"
 				>
 					{{ name }}
@@ -85,7 +94,7 @@ export default {
 		<tbody>
 			<tr>
 				<td
-					v-for="{ value } in units"
+					v-for="{ value } in unitsFiltered"
 					:key="value"
 				>
 					{{ formatNum(value) }}
@@ -96,15 +105,19 @@ export default {
 
 	<div class="wrapper-row">
 		<ConversionUIInput
-			:unit-name="inputs[0].unit"
+			:unit-names="unitNames"
+			:selected-unit="inputs[0].unit"
 			:value="inputs[0].value"
-			@value-change="inputValueChanged"
+			@input-value-change="inputValueChanged"
+			@select-value-change="newUnit => selectValueChanged(0, newUnit)"
 		/>
 		<span><br> = </span>
 		<ConversionUIInput
-			:unit-name="inputs[1].unit"
+			:unit-names="unitNames"
+			:selected-unit="inputs[1].unit"
 			:value="inputs[1].value"
-			@value-change="inputValueChanged"
+			@input-value-change="inputValueChanged"
+			@select-value-change="newUnit => selectValueChanged(1, newUnit)"
 		/>
 	</div>
 </template>
