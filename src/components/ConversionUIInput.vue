@@ -24,8 +24,8 @@ export default {
 		valueChanged(event) {
 			this.value = event.target.value
 			this.$emit('value-change', this.value)
-		}
-	}
+		},
+	},
 }
 </script>
 
@@ -33,8 +33,8 @@ export default {
 	<div class="wrapper-column">
 		<span class="centered">{{ unitName }}</span>
 		<input
-			class="conversion-input"
 			v-model="value"
+			class="conversion-input"
 			@input="valueChanged"
 		>
 	</div>

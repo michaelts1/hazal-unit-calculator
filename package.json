@@ -6,7 +6,7 @@
 	"author": "Michael Tsaban",
 	"license": "MIT",
 	"scripts": {
-		"lint": "eslint src",
+		"lint": "eslint src --ext .js --ext .vue",
 		"build": "webpack & sass src/scss:dist/css",
 		"sass-watch": "sass --watch src/scss:dist/css",
 		"webpack-serve": "webpack serve",

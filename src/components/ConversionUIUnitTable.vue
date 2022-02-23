@@ -33,7 +33,7 @@ export default {
 
 		inputValueChanged(newValue) {
 			console.log(newValue)
-		}
+		},
 	},
 }
 </script>
