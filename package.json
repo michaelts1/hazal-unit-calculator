@@ -7,7 +7,7 @@
 	"license": "MIT",
 	"scripts": {
 		"lint": "eslint src --ext .js --ext .vue",
-		"build": "webpack & sass src/scss:dist/css",
+		"build": "npm run lint && webpack & sass src/scss:dist/css",
 		"sass-watch": "sass --watch src/scss:dist/css",
 		"webpack-serve": "webpack serve",
 		"watch": "run-p sass-watch webpack-serve"
