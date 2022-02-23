@@ -1,6 +1,8 @@
 <script>
 import ConversionUIInput from './ConversionUIInput.vue'
 
+const roundNum = num => Math.round(num * 10_000) / 10_000
+
 export default {
 	components: {
 		ConversionUIInput,
@@ -8,9 +10,25 @@ export default {
 
 	props: {
 		units: {
-			type: Array, /* Array.<{ name: string, value: number }> */
+			/** @type {Array.<{ name: string, value: number }>} */
+			type: Array,
 			required: true,
 		},
+	},
+
+	data() {
+		return {
+			inputs: [
+				{
+					value: 0,
+					unit: 'אצבע',
+				},
+				{
+					value: 0,
+					unit: 'טפח',
+				},
+			],
+		}
 	},
 
 	methods: {
@@ -28,11 +46,25 @@ export default {
 				unit = ' ק"מ'
 			}
 
-			return Math.round(num * 10_000) / 10_000 + unit
+			return roundNum(num) + unit
 		},
 
-		inputValueChanged(newValue) {
-			console.log(newValue)
+		convertToMeters(amount, sourceUnit) {
+			const unit = this.units.filter(({ name }) => name === sourceUnit)[0]
+			return unit.value * amount
+		},
+
+		convertFromMeters(meters, targetUnit) {
+			const unit = this.units.filter(({ name }) => name === targetUnit)[0]
+			return meters / unit.value
+		},
+
+		inputValueChanged(data) {
+			console.log(data.unit, data.value)
+			const value = this.convertToMeters(data.value, data.unit)
+			for (const input of this.inputs) {
+				input.value = roundNum(this.convertFromMeters(value, input.unit))
+			}
 		},
 	},
 }
@@ -62,26 +94,24 @@ export default {
 		</tbody>
 	</table>
 
-	<div class="wrapper-container">
-		<div class="wrapper-row">
-			<ConversionUIInput
-				:unit-name="'אצבע'"
-				@value-change="inputValueChanged"
-			/>
-			<span><br> = </span>
-			<ConversionUIInput
-				:unit-name="'אצבע'"
-				@value-change="inputValueChanged"
-			/>
-		</div>
+	<div class="wrapper-row">
+		<ConversionUIInput
+			:unit-name="inputs[0].unit"
+			:value="inputs[0].value"
+			@value-change="inputValueChanged"
+		/>
+		<span><br> = </span>
+		<ConversionUIInput
+			:unit-name="inputs[1].unit"
+			:value="inputs[1].value"
+			@value-change="inputValueChanged"
+		/>
 	</div>
 </template>
 
 <style scoped>
 	.wrapper-row {
 		display: flex;
-	}
-	.wrapper-container {
 		margin: 1em auto;
 		width: fit-content;
 	}

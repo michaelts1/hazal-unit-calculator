@@ -1,10 +1,9 @@
 <script>
 export default {
 	props: {
-		overrideValue: {
+		value: {
 			type: Number,
-			required: false,
-			default: 0,
+			required: true,
 		},
 		unitName: {
 			type: String,
@@ -14,16 +13,38 @@ export default {
 
 	emits: ['value-change'],
 
-	data() {
-		return {
-			value: this.overrideValue,
-		}
-	},
-
 	methods: {
-		valueChanged(event) {
-			this.value = event.target.value
-			this.$emit('value-change', this.value)
+		numberInput(str) {
+			const num = +str.replace(/,/g, '')
+			if (!Number.isFinite(num)) {
+				throw new TypeError('Invalid number received')
+			} else {
+				return num
+			}
+		},
+
+		changeValidity(target, msg) {
+			target.setCustomValidity(msg)
+			msg ?
+				target.classList.add('invalid') :
+				target.classList.remove('invalid')
+			target.reportValidity()
+		},
+
+		valueChanged({ target }) {
+			try {
+				const value = this.numberInput(target.value)
+				if (typeof value !== 'number') return
+
+				this.$emit('value-change', {
+					unit: this.unitName,
+					value,
+				})
+				this.changeValidity(target, '')
+			} catch (err) {
+				this.changeValidity(target, 'נא הכנס מספר')
+				console.warn('Ignoring number input due to error:', err.message)
+			}
 		},
 	},
 }
@@ -33,14 +54,15 @@ export default {
 	<div class="wrapper-column">
 		<span class="centered">{{ unitName }}</span>
 		<input
-			v-model="value"
+			:value="value"
 			class="conversion-input"
+			size="8"
 			@input="valueChanged"
 		>
 	</div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 	.wrapper-column {
 		display: flex;
 		flex-direction: column;
@@ -52,5 +74,12 @@ export default {
 
 	.conversion-input {
 		margin: 1em 3em;
+
+		&.invalid {
+			box-shadow: #b88 1px 1px 3px 2px;
+			&:focus {
+				box-shadow: #b88 0 -1px 3px 5px;
+			}
+		}
 	}
 </style>
