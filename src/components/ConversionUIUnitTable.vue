@@ -1,16 +1,18 @@
 <script>
 import ConversionUIInput from './ConversionUIInput.vue'
+import ConversionUISelect from './ConversionUISelect.vue'
 
 /**
- * Round to 6 digits
+ * Round to 10 digits
  * @param {number} num
  * @returns {number}
  */
-const roundNum = num => Math.round(num * 1_000_000) / 1_000_000
+const roundNum = num => Math.round(num * 1e10) / 1e10
 
 export default {
 	components: {
 		ConversionUIInput,
+		ConversionUISelect,
 	},
 
 	props: {
@@ -23,10 +25,8 @@ export default {
 
 	data() {
 		return {
-			inputs: [
-				{ unit: 'אצבע', value: 0 },
-				{ unit: 'טפח', value: 0 },
-			],
+			input: { unit: 'אצבע', value: 0 },
+			output: { unit: 'טפח', value: 0 },
 		}
 	},
 
@@ -79,31 +79,43 @@ export default {
 		},
 
 		/**
-		 * Called after the value for one of the inputs has changed
-		 * @param {object} data
-		 * @param {number} data.value New value of the input
-		 * @param {string} data.unit Name of the unit used to measure the value
+		 * Updates output with a new value
+		 * @param {number} meters New value (in meters)
 		 */
-		inputValueChanged(data) {
-			const meters = this.convertToMeters(data.value, data.unit)
-			for (const input of this.inputs) {
-				input.value = roundNum(this.convertFromMeters(meters, input.unit))
-			}
+		updateOutputValue(meters) {
+			const outputValue = this.convertFromMeters(meters, this.output.unit)
+			this.output.value = roundNum(outputValue)
 		},
 
 		/**
-		 * Called after the unit of measurement for one of the inputs has changed
-		 * @param {number} inputIndex Index of the input that has changed its unit
+		 * Called after the input value has changed
+		 * @param {number} newValue New value of the input
+		 */
+		inputValueChanged(newValue) {
+			this.input.value = newValue
+			const meters = this.convertToMeters(newValue, this.input.unit)
+			this.updateOutputValue(meters)
+		},
+
+		/**
+		 * Called after the input unit of measurement has changed
 		 * @param {string} newUnit Name of the new unit
 		 */
-		selectValueChanged(inputIndex, newUnit) {
-			const thisInput = this.inputs[inputIndex]
-			thisInput.unit = newUnit
+		InputUnitChanged(newUnit) {
+			this.input.unit = newUnit
 
-			// Update value for the other input
-			const meteres = this.convertToMeters(thisInput.value, newUnit)
-			const otherInput = this.inputs[inputIndex ^ 1]
-			otherInput.value = roundNum(this.convertFromMeters(meteres, otherInput.unit))
+			const meters = this.convertToMeters(this.input.value, newUnit)
+			this.updateOutputValue(meters)
+		},
+
+		/**
+		 * Called after the output unit of measurement has changed
+		 * @param {string} newUnit Name of the new unit
+		 */
+		OutputUnitChanged(newUnit) {
+			const meters = this.convertToMeters(this.output.value, this.output.unit)
+			this.output.unit = newUnit
+			this.updateOutputValue(meters)
 		},
 	},
 }
@@ -134,28 +146,55 @@ export default {
 	</table>
 
 	<div class="wrapper-row">
-		<ConversionUIInput
-			:unit-names="unitNames"
-			:selected-unit="inputs[0].unit"
-			:value="inputs[0].value"
-			@input-value-change="inputValueChanged"
-			@select-value-change="newUnit => selectValueChanged(0, newUnit)"
-		/>
-		<span><br> = </span>
-		<ConversionUIInput
-			:unit-names="unitNames"
-			:selected-unit="inputs[1].unit"
-			:value="inputs[1].value"
-			@input-value-change="inputValueChanged"
-			@select-value-change="newUnit => selectValueChanged(1, newUnit)"
-		/>
+		<div class="wrapper-column">
+			<ConversionUISelect
+				class="centered"
+				:unit-names="unitNames"
+				:selected-unit="input.unit"
+				@value-change="newUnit => InputUnitChanged(newUnit)"
+			/>
+			<ConversionUIInput
+				size="12"
+				:value="input.value"
+				@value-change="inputValueChanged"
+			/>
+		</div>
+		<div class="wrapper-column">
+			=
+		</div>
+		<div class="wrapper-column">
+			<ConversionUISelect
+				class="centered"
+				:unit-names="unitNames"
+				:selected-unit="output.unit"
+				@value-change="newUnit => OutputUnitChanged(newUnit)"
+			/>
+			<ConversionUIInput
+				size="12"
+				:disabled="true"
+				:value="output.value"
+				@value-change="inputValueChanged"
+			/>
+		</div>
 	</div>
 </template>
 
 <style scoped>
+	.centered {
+		margin: 0 auto;
+		text-align: center;
+	}
+
 	.wrapper-row {
 		display: flex;
 		margin: 1em auto;
 		width: fit-content;
+	}
+
+	.wrapper-column {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 </style>

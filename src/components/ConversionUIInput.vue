@@ -5,33 +5,40 @@ export default {
 			type: Number,
 			required: true,
 		},
-		selectedUnit: {
-			type: String,
-			required: true,
-		},
-		unitNames: {
-			/** @type {string[]} */
-			type: Array,
-			required: true,
+		disabled: {
+			type: Boolean,
 		},
 	},
 
-	emits: [
-		'input-value-change',
-		'select-value-change',
-	],
+	emits: ['value-change'],
 
 	data() {
 		return {
 			valid: true,
+			domValue: this.value,
 		}
 	},
 
-	/*
-		Why are we using a computed property for storing the value,
-		instead of just using `this.value`?
+	computed: {
+		disabledValue() {
+			let digits = 10
+			if (this.value > 1) {
+				digits = 4
+			} else if (this.value > 1e-2) {
+				digits = 5
+			} else if (this.value > 1e-4) {
+				digits = 8
+			}
 
-		In Vue, components get updated whenever the component data changes.
+			return this.value.toLocaleString(undefined, { maximumFractionDigits: digits })
+		},
+	},
+
+	/*
+		Why are we using a data property for storing the value and update it
+		when the props value changes, instead of just using `this.value`?
+
+		In Vue, components get updated whenever their component data changes.
 
 			In this case, this means that when the value of the input in the
 		DOM is not the same as the value in the props (e.g. when the DOM value
@@ -41,31 +48,16 @@ export default {
 			Unfortunately, this will also delete the most recent user input,
 		since that input does not yet exist in the props.
 
-			To avoid this from happening, we use a computed property that is
+			To avoid this from happening, we use a data property that is
 		always updated to be equal to the DOM value, and will only get
 		overwritten by the props value when `this.value` changes, and not when
-		any other part of the component data changes.
+		any other part of the component changes.
 	 */
-	computed: {
-		domValue() { return this.value },
+	watch: {
+		value: function(newValue) { this.domValue = newValue },
 	},
 
 	methods: {
-		/**
-		 * Converts string number to numbers if possible, and throws
-		 * an error if the string isn't a valid number
-		 * @param {string} str
-		 * @returns {number}
-		 */
-		numberFromString(str) {
-			const num = +str.replace(/,/g, '')
-			if (!Number.isFinite(num)) {
-				throw new TypeError('Invalid number received')
-			} else {
-				return num
-			}
-		},
-
 		/**
 		 * Updates the validity status of the input
 		 * @param {HTMLInputElement} target
@@ -83,59 +75,38 @@ export default {
 		 * @param {InputEvent} event
 		 */
 		inputValueChanged({ target }) {
-			try {
-				const value = this.numberFromString(target.value)
-				this.$emit('input-value-change', {
-					unit: this.selectedUnit,
-					value,
-				})
+			const value = +target.value.replace(/,/g, '')
 
-				this.changeValidity(target, '')
-			} catch (err) {
+			if (!Number.isFinite(value)) {
 				this.changeValidity(target, 'נא הכנס מספר')
 				console.log('Ignoring invalid number input')
+				return
 			}
+
+			this.$emit('value-change', value)
+
+			this.changeValidity(target, '')
 		},
 	},
 }
 </script>
 
 <template>
-	<div class="wrapper-column">
-		<select
-			:value="selectedUnit"
-			class="centered"
-			@change="({ target }) => $emit('select-value-change', target.value)"
-		>
-			<option
-				v-for="name in unitNames"
-				:key="name"
-				:value="name"
-			>
-				{{ name }}
-			</option>
-		</select>
-		<input
-			v-model="domValue"
-			:class="{ 'conversion-input': true, 'invalid': !valid }"
-			size="12"
-			@input="inputValueChanged"
-		>
-	</div>
+	<input
+		v-if="disabled"
+		:value="disabledValue"
+		class="conversion-input"
+		disabled
+	>
+	<input
+		v-else
+		v-model="domValue"
+		:class="{ 'conversion-input': true, 'invalid': !valid }"
+		@input="inputValueChanged"
+	>
 </template>
 
 <style scoped lang="scss">
-	.wrapper-column {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-
-	.centered {
-		margin: 0 auto;
-		text-align: center;
-	}
-
 	.conversion-input {
 		margin: 1em 3em;
 
@@ -144,6 +115,9 @@ export default {
 			&:focus {
 				box-shadow: #b88 0 -1px 3px 5px;
 			}
+		}
+		&:disabled {
+			color: black;
 		}
 	}
 </style>
