@@ -11,4 +11,6 @@ export default {
 <template>
 	<h1>מחשבון יחידות תלמודיות</h1>
 	<ConversionUI />
+
+	<footer>© כל הזכויות שמורות למיכאל צבאן</footer>
 </template>
