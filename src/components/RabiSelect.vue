@@ -1,5 +1,7 @@
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
 	props: {
 		defaultRuler: {
 			type: String,
@@ -14,7 +16,7 @@ export default {
 			value: this.defaultRuler,
 		}
 	},
-}
+})
 </script>
 
 <template>

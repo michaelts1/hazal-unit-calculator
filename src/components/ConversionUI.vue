@@ -1,16 +1,18 @@
-<script>
+<script lang="ts">
 import ConversionUIUnitTable from './ConversionUIUnitTable.vue'
+import { defineComponent } from 'vue'
 import RabiSelect from './RabiSelect.vue'
+import type { Unit } from './types'
 
-export default {
+export default defineComponent({
 	components: {
 		RabiSelect,
 		ConversionUIUnitTable,
 	},
 
 	props: {
-		/* eslint-disable-next-line */ // If this useless line is removed, Vetur breaks :shrug:
-		uselessProp: undefined,
+		/* eslint-disable-next-line */ // If this useless prop is removed, Vetur breaks :shrug:
+		_$uselessProp: String,
 	},
 
 	data() {
@@ -29,14 +31,14 @@ export default {
 					return 0.02
 			}
 		},
-		tefach: self => 4    * self.etzba ,
-		sit   : self => 2    * self.tefach,
-		zeret : self => 0.5  * self.amah  ,
-		amah  : self => 6    * self.tefach,
-		ris   : self => 2/15 * self.mil   ,
-		mil   : self => 2000 * self.amah  ,
-		parsa : self => 4    * self.mil   ,
-		units() {
+		tefach() { return 4    * this.etzba  },
+		sit()    { return 2    * this.tefach },
+		zeret()  { return 0.5  * this.amah   },
+		amah()   { return 6    * this.tefach },
+		ris()    { return 2/15 * this.mil    },
+		mil()    { return 2000 * this.amah   },
+		parsa()  { return 4    * this.mil    },
+		units(): Unit[] {
 			return [
 				{ hidden: true, name: 'סנטימטר', value: 0.01 },
 				{ hidden: true, name: 'מטר', value: 1 },
@@ -52,7 +54,7 @@ export default {
 			]
 		},
 	},
-}
+})
 </script>
 
 <template>

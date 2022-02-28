@@ -7,7 +7,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const config = {
 	mode: 'development',
 
-	entry: './src/index.js',
+	entry: './src/index.ts',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'index.js',
@@ -21,7 +21,11 @@ const config = {
 			},
 			{
 				include: /src/,
-				test: /\.js$/,
+				test: /\.(t|j)sx?$/,
+				loader: 'ts-loader',
+				options: {
+					appendTsSuffixTo: [/\.vue$/]
+				}
 			},
 			{
 				include: /src/,
@@ -38,6 +42,7 @@ const config = {
 	resolve: {
 		extensions: [
 			'.js',
+			'.ts',
 			'.vue',
 		],
 		alias: {

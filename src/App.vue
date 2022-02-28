@@ -1,4 +1,4 @@
-<script>
+<script lang="js">
 import ConversionUI from './components/ConversionUI.vue'
 
 export default {

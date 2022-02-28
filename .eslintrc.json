@@ -4,19 +4,24 @@
 		"browser": true
 	},
 
+	"parser": "vue-eslint-parser",
+
 	"parserOptions": {
-		"ecmaVersion": 2022
+		"ecmaVersion": 2022,
+		"parser": "@typescript-eslint/parser"
 	},
 
 	"plugins": [
-		"eslint-plugin-vue"
+		"eslint-plugin-vue",
+		"@typescript-eslint"
 	],
 
-	"ignorePatterns": "webpack.config.js",
+	"ignorePatterns": [ "webpack.config.js", "*.d.ts" ],
 
 	"extends": [
 		"eslint:recommended",
-		"plugin:vue/vue3-recommended"
+		"plugin:vue/vue3-recommended",
+		"plugin:@typescript-eslint/recommended"
 	],
 
 	"rules": {
@@ -64,7 +69,7 @@
 		"no-sequences": "error",
 		"no-trailing-spaces": "error",
 		"no-unsafe-optional-chaining" : "error",
-		"no-use-before-define": [
+		"@typescript-eslint/no-use-before-define": [
 			"error",
 			{
 				"functions": false,

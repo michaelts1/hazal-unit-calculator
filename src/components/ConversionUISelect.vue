@@ -1,5 +1,7 @@
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
 	props: {
 		selectedUnit: {
 			type: String,
@@ -13,7 +15,7 @@ export default {
 	},
 
 	emits: ['value-change'],
-}
+})
 </script>
 
 <template>

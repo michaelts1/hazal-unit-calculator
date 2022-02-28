@@ -1,15 +1,13 @@
-<script>
+<script lang="ts">
+import { defineComponent, PropType } from 'vue'
 import ConversionUIInput from './ConversionUIInput.vue'
 import ConversionUISelect from './ConversionUISelect.vue'
+import type { Unit } from './types'
 
-/**
- * Round to 10 digits
- * @param {number} num
- * @returns {number}
- */
-const roundNum = num => Math.round(num * 1e10) / 1e10
+/* Rounds to 10 digits */
+const roundNum = (num: number): number => Math.round(num * 1e10) / 1e10
 
-export default {
+export default defineComponent({
 	components: {
 		ConversionUIInput,
 		ConversionUISelect,
@@ -17,16 +15,15 @@ export default {
 
 	props: {
 		units: {
-			/** @type {Array.<{ name: string, value: number }>} */
-			type: Array,
+			type: Array as PropType<Unit[]>,
 			required: true,
 		},
 	},
 
 	data() {
 		return {
-			input: { unit: 'אצבע', value: 0 },
-			output: { unit: 'טפח', value: 0 },
+			input: { unit: 'טפח', value: 0 },
+			output: { unit: 'סנטימטר', value: 0 },
 		}
 	},
 
@@ -41,7 +38,7 @@ export default {
 		 * @param {number} num
 		 * @returns {string}
 		 */
-		formatNum(num) {
+		formatNum(num: number): string {
 			let unit = ' מטר'
 
 			if (num < 0.01) {
@@ -63,7 +60,7 @@ export default {
 		 * @param {number} amount Measurement calculated using non-metric units
 		 * @param {string} sourceUnit Name of the unit of measurement used
 		 */
-		convertToMeters(amount, sourceUnit) {
+		convertToMeters(amount: number, sourceUnit: string) {
 			const unit = this.units.filter(({ name }) => name === sourceUnit)[0]
 			return unit.value * amount
 		},
@@ -73,7 +70,7 @@ export default {
 		 * @param {number} meters
 		 * @param {string} targetUnit Name of the target unit of measurement
 		 */
-		convertFromMeters(meters, targetUnit) {
+		convertFromMeters(meters: number, targetUnit: string) {
 			const unit = this.units.filter(({ name }) => name === targetUnit)[0]
 			return meters / unit.value
 		},
@@ -82,7 +79,7 @@ export default {
 		 * Updates output with a new value
 		 * @param {number} meters New value (in meters)
 		 */
-		updateOutputValue(meters) {
+		updateOutputValue(meters: number) {
 			const outputValue = this.convertFromMeters(meters, this.output.unit)
 			this.output.value = roundNum(outputValue)
 		},
@@ -91,7 +88,7 @@ export default {
 		 * Called after the input value has changed
 		 * @param {number} newValue New value of the input
 		 */
-		inputValueChanged(newValue) {
+		inputValueChanged(newValue: number) {
 			this.input.value = newValue
 			const meters = this.convertToMeters(newValue, this.input.unit)
 			this.updateOutputValue(meters)
@@ -101,7 +98,7 @@ export default {
 		 * Called after the input unit of measurement has changed
 		 * @param {string} newUnit Name of the new unit
 		 */
-		InputUnitChanged(newUnit) {
+		InputUnitChanged(newUnit: string) {
 			this.input.unit = newUnit
 
 			const meters = this.convertToMeters(this.input.value, newUnit)
@@ -112,13 +109,13 @@ export default {
 		 * Called after the output unit of measurement has changed
 		 * @param {string} newUnit Name of the new unit
 		 */
-		OutputUnitChanged(newUnit) {
+		OutputUnitChanged(newUnit: string) {
 			const meters = this.convertToMeters(this.output.value, this.output.unit)
 			this.output.unit = newUnit
 			this.updateOutputValue(meters)
 		},
 	},
-}
+})
 </script>
 
 <template>

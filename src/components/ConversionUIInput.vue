@@ -1,5 +1,8 @@
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+import type { ElementInputEvent } from './types'
+
+export default defineComponent({
 	props: {
 		value: {
 			type: Number,
@@ -58,23 +61,15 @@ export default {
 	},
 
 	methods: {
-		/**
-		 * Updates the validity status of the input
-		 * @param {HTMLInputElement} target
-		 * @param {msg} target
-		 */
-		changeValidity(target, msg) {
+		/** Updates the validity status of the input */
+		changeValidity(target: HTMLInputElement, msg: string) {
 			target.setCustomValidity(msg)
 			target.reportValidity()
 			this.valid = msg === ''
 		},
 
-		/**
-		 * Checks the validity of the input field and emits the new
-		 * value to the parent component
-		 * @param {InputEvent} event
-		 */
-		inputValueChanged({ target }) {
+		/** Checks the validity of the input field and emits the new value to the parent component */
+		inputValueChanged({ target }: ElementInputEvent<HTMLInputElement>) {
 			const value = +target.value.replace(/,/g, '')
 
 			if (!Number.isFinite(value)) {
@@ -88,7 +83,7 @@ export default {
 			this.changeValidity(target, '')
 		},
 	},
-}
+})
 </script>
 
 <template>
