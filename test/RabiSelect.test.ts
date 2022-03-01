@@ -13,17 +13,14 @@ describe('Component RabiSelect', () => {
 		},
 	})
 
-	it('has a select field with 2 options', () => {
+	it('has a select field with correct id and 2 options', () => {
 		expect(wrapper.find('select').exists()).toBe(true)
+		expect(wrapper.find('select').attributes()).toHaveProperty('id', 'ruler-select')
 		expect(wrapper.findAll('option')).toHaveLength(2)
 	})
 
 	it('matches snapshot', () => {
 		expect(wrapper.text()).toMatchSnapshot()
-	})
-
-	it('has a value', () => {
-		console.log(wrapper.props())
 	})
 
 	it('reacts to value changes', async () => {

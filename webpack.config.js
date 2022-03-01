@@ -16,6 +16,7 @@ const config = {
 	module: {
 		rules: [
 			{
+				include: /src/,
 				test: /\.vue$/,
 				loader: 'vue-loader',
 			},
