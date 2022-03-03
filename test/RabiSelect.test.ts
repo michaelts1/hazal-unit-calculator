@@ -13,14 +13,14 @@ describe('Component RabiSelect', () => {
 		},
 	})
 
-	it('has a select field with correct id and 2 options', () => {
+	it('has a select field with correct id and 2 option elements', () => {
 		expect(wrapper.find('select').exists()).toBe(true)
 		expect(wrapper.find('select').attributes()).toHaveProperty('id', 'ruler-select')
 		expect(wrapper.findAll('option')).toHaveLength(2)
 	})
 
 	it('matches snapshot', () => {
-		expect(wrapper.text()).toMatchSnapshot()
+		expect(wrapper.html()).toMatchSnapshot()
 	})
 
 	it('reacts to value changes', async () => {
@@ -32,11 +32,11 @@ describe('Component RabiSelect', () => {
 		await options[0].setSelected()
 		expect(wrapper.vm.value).toBe('גרח')
 
-		const rulerChangeEvent = wrapper.emitted('ruler-change') as unknown[]
-		expect(rulerChangeEvent[0]).toEqual([ 'חזון_איש' ])
-		expect(rulerChangeEvent[1]).toEqual([ 'גרח' ])
+		const rulerChangeEvents = wrapper.emitted('ruler-change') as unknown[]
+		expect(rulerChangeEvents[0]).toEqual([ 'חזון_איש' ])
+		expect(rulerChangeEvents[1]).toEqual([ 'גרח' ])
 
-		const changeEvent = wrapper.emitted('change') as unknown[]
-		expect(changeEvent).toHaveLength(2)
+		const changeEvents = wrapper.emitted('change') as unknown[]
+		expect(changeEvents).toHaveLength(2)
 	})
 })

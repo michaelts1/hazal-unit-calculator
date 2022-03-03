@@ -17,7 +17,7 @@ export default defineComponent({
 	data() {
 		return {
 			valid: true,
-			domValue: this.value,
+			domValue: String(this.value),
 		}
 	},
 
@@ -56,7 +56,7 @@ export default defineComponent({
 		any other part of the component changes.
 	 */
 	watch: {
-		value: function(newValue) { this.domValue = newValue },
+		value(newValue: number) { this.domValue = String(newValue) },
 	},
 
 	methods: {

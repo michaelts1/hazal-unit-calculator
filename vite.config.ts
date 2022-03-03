@@ -17,7 +17,7 @@ export default defineConfig({
 		],
 		outDir: 'dist',
 		assetsDir: './',
-		sourcemap: 'inline',
+		sourcemap: true,
 	},
 
 	test: {
@@ -25,7 +25,7 @@ export default defineConfig({
 		environment: 'jsdom',
 		coverage: {
 			enabled: true,
-			clean: false,
+			clean: false, // VSCode locks files, causing EPERM errors on deletion
 			include: [ 'src/**' ],
 			all: true,
 			100: true,
