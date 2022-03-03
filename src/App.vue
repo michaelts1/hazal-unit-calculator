@@ -1,5 +1,4 @@
-<!-- Not using TypeScript due to a bug. See https://stackoverflow.com/questions/70051535 -->
-<script lang="js">
+<script lang="ts">
 import ConversionUI from './components/ConversionUI.vue'
 
 export default {

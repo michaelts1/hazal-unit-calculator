@@ -1,5 +1,6 @@
 declare module '*.vue' {
-	import Vue from 'vue'
-	const component: ReturnType<Vue.DefineComponent>
+	import type { DefineComponent } from 'vue'
+	// eslint-disable-next-line init-declarations
+	const component: DefineComponent
 	export default component
 }

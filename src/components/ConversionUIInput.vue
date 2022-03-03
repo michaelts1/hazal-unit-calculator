@@ -1,6 +1,5 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
-import type { ElementInputEvent } from './types'
 
 export default defineComponent({
 	props: {
@@ -69,9 +68,10 @@ export default defineComponent({
 		},
 
 		/** Checks the validity of the input field and emits the new value to the parent component */
-		inputValueChanged({ target }: ElementInputEvent<HTMLInputElement>) {
-			const value = +target.value.replace(/,/g, '')
+		inputValueChanged(event: Event) {
+			const target = event.target as HTMLInputElement
 
+			const value = +target.value.replace(/,/g, '')
 			if (!Number.isFinite(value)) {
 				this.changeValidity(target, 'נא הכנס מספר')
 				console.log('Ignoring invalid number input')
@@ -79,7 +79,6 @@ export default defineComponent({
 			}
 
 			this.$emit('value-change', value)
-
 			this.changeValidity(target, '')
 		},
 	},

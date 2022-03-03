@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 
 export default defineComponent({
 	props: {
@@ -8,20 +8,23 @@ export default defineComponent({
 			required: true,
 		},
 		unitNames: {
-			/** @type {string[]} */
-			type: Array,
+			type: Array as PropType<string[]>,
 			required: true,
 		},
 	},
 
 	emits: ['value-change'],
+
+	methods: {
+		onChange({ target }: Event) { this.$emit('value-change', (target as HTMLSelectElement).value) },
+	},
 })
 </script>
 
 <template>
 	<select
 		:value="selectedUnit"
-		@change="({ target }) => $emit('value-change', target.value)"
+		@change="onChange"
 	>
 		<option
 			v-for="name in unitNames"
