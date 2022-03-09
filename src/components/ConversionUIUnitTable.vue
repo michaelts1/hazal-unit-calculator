@@ -5,7 +5,7 @@ import ConversionUISelect from './ConversionUISelect.vue'
 import type { Unit } from './types'
 
 /* Rounds to 10 digits */
-const roundNum = (num: number): number => Math.round(num * 1e10) / 1e10
+const roundNum = (num: number) => Math.round(num * 1e10) / 1e10
 
 export default defineComponent({
 	components: {
@@ -170,7 +170,6 @@ export default defineComponent({
 				size="12"
 				:disabled="true"
 				:value="output.value"
-				@value-change="inputValueChanged"
 			/>
 		</div>
 	</div>
