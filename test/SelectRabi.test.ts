@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest'
-import ConversionUISelect from '../src/components/ConversionUISelect.vue'
 import { mount } from '@vue/test-utils'
+import SelectUnit from '../src/components/SelectUnit.vue'
 
-describe('Component ConversionUISelect', () => {
+describe('Component SelectUnit', () => {
 	it('exists', () => {
-		expect(ConversionUISelect).toBeTruthy()
+		expect(SelectUnit).toBeTruthy()
 	})
 
 	const unitNames = [ 'טפח', 'אצבע' ]
-	const wrapper = mount(ConversionUISelect, {
+	const wrapper = mount(SelectUnit, {
 		props: {
 			selectedUnit: unitNames[0],
 			unitNames,

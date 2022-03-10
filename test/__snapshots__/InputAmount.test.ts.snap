@@ -1,0 +1,5 @@
+// Vitest Snapshot v1
+
+exports[`Component InputAmount, disabled > matches snapshot 1`] = `"<input class=\\"conversion-input\\" disabled=\\"\\" data-v-519321c2=\\"\\">"`;
+
+exports[`Component InputAmount, enabled > matches snapshot 1`] = `"<input class=\\"conversion-input\\" data-v-519321c2=\\"\\">"`;

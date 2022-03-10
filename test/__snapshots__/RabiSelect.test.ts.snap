@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`Component RabiSelect > matches snapshot 1`] = `
+exports[`Component SelectRabi > matches snapshot 1`] = `
 "<label for=\\"ruler-select\\">שיטת מדידה: </label><select id=\\"ruler-select\\">
   <option value=\\"גרח\\"> גר\\"ח (רב חיים נאה) </option>
   <option value=\\"חזון_איש\\"> חזון איש </option>

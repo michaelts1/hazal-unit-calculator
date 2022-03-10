@@ -1,13 +1,13 @@
 <script lang="ts">
-import ConversionUIUnitTable from './ConversionUIUnitTable.vue'
 import { defineComponent } from 'vue'
-import RabiSelect from './RabiSelect.vue'
+import LengthTable from './LengthTable.vue'
+import SelectRabi from './SelectRabi.vue'
 import type { Unit } from './types'
 
 export default defineComponent({
 	components: {
-		RabiSelect,
-		ConversionUIUnitTable,
+		SelectRabi,
+		LengthTable,
 	},
 
 	props: {
@@ -58,11 +58,11 @@ export default defineComponent({
 </script>
 
 <template>
-	<RabiSelect
+	<SelectRabi
 		:default-ruler="ruler"
 		@ruler-change="newRuler => ruler = newRuler"
 	/>
 
 	<h6>שים לב: הסיט מחושב לפי שיטת הרמב"ם</h6>
-	<ConversionUIUnitTable :units="units" />
+	<LengthTable :units="units" />
 </template>

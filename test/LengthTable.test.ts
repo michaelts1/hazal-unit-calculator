@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import ConversionUIUnitTable from '../src/components/ConversionUIUnitTable.vue'
+import LengthTable from '../src/components/LengthTable.vue'
 import { mount } from '@vue/test-utils'
 import type { Unit } from '../src/components/types'
 
@@ -8,9 +8,9 @@ interface ColumnData {
 	value: number
 }
 
-describe('Component ConversionUIUnitTable', () => {
+describe('Component LengthTable', () => {
 	it('exists', () => {
-		expect(ConversionUIUnitTable).toBeTruthy()
+		expect(LengthTable).toBeTruthy()
 	})
 
 	const units: Unit[] = [
@@ -20,7 +20,7 @@ describe('Component ConversionUIUnitTable', () => {
 		{ hidden: false, name: 'טפח', value: 4 },
 		{ hidden: false, name: 'זרת', value: 4000 },
 	]
-	const wrapper = mount(ConversionUIUnitTable, {
+	const wrapper = mount(LengthTable, {
 		props: {
 			units,
 		},
@@ -46,8 +46,8 @@ describe('Component ConversionUIUnitTable', () => {
 		expect(wrapper.text()).toContain('50 ס"מ')
 	})
 
-	it('responds to events emitted by ConversionUISelect', () => {
-		const [ input, output ] = wrapper.findAllComponents({ name: 'ConversionUISelect' })
+	it('responds to events emitted by SelectUnit', () => {
+		const [ input, output ] = wrapper.findAllComponents({ name: 'SelectUnit' })
 
 		expect((wrapper.vm.input as ColumnData).unit).toBe('טפח') // Default
 		input.vm.$emit('value-change', 'אצבע')
@@ -58,8 +58,8 @@ describe('Component ConversionUIUnitTable', () => {
 		expect((wrapper.vm.output as ColumnData).unit).toBe('אמה') // New value
 	})
 
-	it('responds to events emitted by ConversionUIInput', () => {
-		const input = wrapper.findComponent({ name: 'ConversionUIInput' })
+	it('responds to events emitted by InputAmount', () => {
+		const input = wrapper.findComponent({ name: 'InputAmount' })
 
 		expect((wrapper.vm.input as ColumnData).value).toBe(0) // Default
 		input.vm.$emit('value-change', 10)

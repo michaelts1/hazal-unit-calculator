@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import RabiSelect from '../src/components/RabiSelect.vue'
+import SelectRabi from '../src/components/SelectRabi.vue'
 
-describe('Component RabiSelect', () => {
+describe('Component SelectRabi', () => {
 	it('exists', () => {
-		expect(RabiSelect).toBeTruthy()
+		expect(SelectRabi).toBeTruthy()
 	})
 
-	const wrapper = mount(RabiSelect, {
+	const wrapper = mount(SelectRabi, {
 		props: {
 			defaultRuler: 'גר"ח',
 		},

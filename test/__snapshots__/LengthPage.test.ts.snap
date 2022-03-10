@@ -1,0 +1,64 @@
+// Vitest Snapshot v1
+
+exports[`Component LengthPage > matches snapshot 1`] = `
+"<label for=\\"ruler-select\\">שיטת מדידה: </label><select id=\\"ruler-select\\">
+  <option value=\\"גרח\\"> גר\\"ח (רב חיים נאה) </option>
+  <option value=\\"חזון_איש\\"> חזון איש </option>
+</select>
+<h6>שים לב: הסיט מחושב לפי שיטת הרמב\\"ם</h6>
+<table data-v-4279aa88=\\"\\">
+  <thead data-v-4279aa88=\\"\\">
+    <tr data-v-4279aa88=\\"\\">
+      <th data-v-4279aa88=\\"\\">אצבע</th>
+      <th data-v-4279aa88=\\"\\">טפח</th>
+      <th data-v-4279aa88=\\"\\">סיט</th>
+      <th data-v-4279aa88=\\"\\">זרת</th>
+      <th data-v-4279aa88=\\"\\">אמה</th>
+      <th data-v-4279aa88=\\"\\">ריס</th>
+      <th data-v-4279aa88=\\"\\">מיל</th>
+      <th data-v-4279aa88=\\"\\">פרסה</th>
+    </tr>
+  </thead>
+  <tbody data-v-4279aa88=\\"\\">
+    <tr data-v-4279aa88=\\"\\">
+      <td data-v-4279aa88=\\"\\">2 ס\\"מ</td>
+      <td data-v-4279aa88=\\"\\">8 ס\\"מ</td>
+      <td data-v-4279aa88=\\"\\">16 ס\\"מ</td>
+      <td data-v-4279aa88=\\"\\">24 ס\\"מ</td>
+      <td data-v-4279aa88=\\"\\">48 ס\\"מ</td>
+      <td data-v-4279aa88=\\"\\">128 מטר</td>
+      <td data-v-4279aa88=\\"\\">960 מטר</td>
+      <td data-v-4279aa88=\\"\\">3.84 ק\\"מ</td>
+    </tr>
+  </tbody>
+</table>
+<div class=\\"wrapper-row\\" data-v-4279aa88=\\"\\">
+  <div class=\\"wrapper-column\\" data-v-4279aa88=\\"\\"><select class=\\"centered\\" data-v-4279aa88=\\"\\">
+      <option value=\\"סנטימטר\\">סנטימטר</option>
+      <option value=\\"מטר\\">מטר</option>
+      <option value=\\"קילומטר\\">קילומטר</option>
+      <option value=\\"אצבע\\">אצבע</option>
+      <option value=\\"טפח\\">טפח</option>
+      <option value=\\"סיט\\">סיט</option>
+      <option value=\\"זרת\\">זרת</option>
+      <option value=\\"אמה\\">אמה</option>
+      <option value=\\"ריס\\">ריס</option>
+      <option value=\\"מיל\\">מיל</option>
+      <option value=\\"פרסה\\">פרסה</option>
+    </select><input class=\\"conversion-input\\" size=\\"12\\" data-v-519321c2=\\"\\" data-v-4279aa88=\\"\\"></div>
+  <div class=\\"wrapper-column\\" data-v-4279aa88=\\"\\"> = </div>
+  <div class=\\"wrapper-column\\" data-v-4279aa88=\\"\\"><select class=\\"centered\\" data-v-4279aa88=\\"\\">
+      <option value=\\"סנטימטר\\">סנטימטר</option>
+      <option value=\\"מטר\\">מטר</option>
+      <option value=\\"קילומטר\\">קילומטר</option>
+      <option value=\\"אצבע\\">אצבע</option>
+      <option value=\\"טפח\\">טפח</option>
+      <option value=\\"סיט\\">סיט</option>
+      <option value=\\"זרת\\">זרת</option>
+      <option value=\\"אמה\\">אמה</option>
+      <option value=\\"ריס\\">ריס</option>
+      <option value=\\"מיל\\">מיל</option>
+      <option value=\\"פרסה\\">פרסה</option>
+    </select><input class=\\"conversion-input\\" disabled=\\"\\" size=\\"12\\" data-v-519321c2=\\"\\" data-v-4279aa88=\\"\\"></div>
+</div>"
+`;

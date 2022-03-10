@@ -1,16 +1,23 @@
 <script lang="ts">
-import ConversionUI from './components/ConversionUI.vue'
+import { defineComponent } from 'vue'
+import LengthPage from './components/LengthPage.vue'
 
-export default {
+export default defineComponent({
 	components: {
-		ConversionUI,
+		LengthPage,
 	},
-}
+
+	data() {
+		return {
+			view: 'LengthPage',
+		}
+	},
+})
 </script>
 
 <template>
 	<h1>מחשבון יחידות תלמודיות</h1>
-	<ConversionUI />
+	<LengthPage v-if="view === 'LengthPage'" />
 
 	<footer>© כל הזכויות שמורות למיכאל צבאן</footer>
 </template>

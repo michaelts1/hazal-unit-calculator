@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest'
-import ConversionUIInput from '../src/components/ConversionUIInput.vue'
+import InputAmount from '../src/components/InputAmount.vue'
 import { mount } from '@vue/test-utils'
 
-describe('Component ConversionUIInput, enabled', () => {
+describe('Component InputAmount, enabled', () => {
 	it('exists', () => {
-		expect(ConversionUIInput).toBeTruthy()
+		expect(InputAmount).toBeTruthy()
 	})
 
-	const wrapper = mount(ConversionUIInput, {
+	const wrapper = mount(InputAmount, {
 		props: {
 			value: 0,
 		},
@@ -53,8 +53,8 @@ describe('Component ConversionUIInput, enabled', () => {
 	})
 })
 
-describe('Component ConversionUIInput, disabled', () => {
-	const wrapper = mount(ConversionUIInput, {
+describe('Component InputAmount, disabled', () => {
+	const wrapper = mount(InputAmount, {
 		props: {
 			value: 0,
 			disabled: true,

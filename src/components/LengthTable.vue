@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import ConversionUIInput from './ConversionUIInput.vue'
-import ConversionUISelect from './ConversionUISelect.vue'
+import InputAmount from './InputAmount.vue'
+import SelectUnit from './SelectUnit.vue'
 import type { Unit } from './types'
 
 /* Rounds to 10 digits */
@@ -9,8 +9,8 @@ const roundNum = (num: number) => Math.round(num * 1e10) / 1e10
 
 export default defineComponent({
 	components: {
-		ConversionUIInput,
-		ConversionUISelect,
+		InputAmount,
+		SelectUnit,
 	},
 
 	props: {
@@ -144,13 +144,13 @@ export default defineComponent({
 
 	<div class="wrapper-row">
 		<div class="wrapper-column">
-			<ConversionUISelect
+			<SelectUnit
 				class="centered"
 				:unit-names="unitNames"
 				:selected-unit="input.unit"
 				@value-change="newUnit => InputUnitChanged(newUnit)"
 			/>
-			<ConversionUIInput
+			<InputAmount
 				size="12"
 				:value="input.value"
 				@value-change="inputValueChanged"
@@ -160,13 +160,13 @@ export default defineComponent({
 			=
 		</div>
 		<div class="wrapper-column">
-			<ConversionUISelect
+			<SelectUnit
 				class="centered"
 				:unit-names="unitNames"
 				:selected-unit="output.unit"
 				@value-change="newUnit => OutputUnitChanged(newUnit)"
 			/>
-			<ConversionUIInput
+			<InputAmount
 				size="12"
 				:disabled="true"
 				:value="output.value"

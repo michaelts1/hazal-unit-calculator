@@ -4,13 +4,15 @@
 	"description": "Web-based calculator for converting different units of measurement from Haza\"l era to other units",
 	"author": "Michael Tsaban",
 	"license": "MIT",
+
 	"scripts": {
 		"lint": "eslint src --ext .js --ext .ts --ext .vue",
 		"test": "rm -fr coverage || (rmdir coverage /s /q | break) && vue-tsc --noEmit && vitest run",
 		"compile": "vite build",
 		"build": "npm run lint && npm run test && npm run compile",
-		"watch": "vite serve"
+		"serve": "vite serve"
 	},
+
 	"devDependencies": {
 		"@types/firefox": "^0.0.31",
 		"@typescript-eslint/eslint-plugin": "^5.13.0",

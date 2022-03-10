@@ -1,5 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`Component ConversionUIInput, disabled > matches snapshot 1`] = `"<input class=\\"conversion-input\\" disabled=\\"\\" data-v-951c0080=\\"\\">"`;
-
-exports[`Component ConversionUIInput, enabled > matches snapshot 1`] = `"<input class=\\"conversion-input\\" data-v-951c0080=\\"\\">"`;
