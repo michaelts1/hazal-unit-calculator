@@ -4,7 +4,6 @@
 	"description": "Web-based calculator for converting different units of measurement from Haza\"l era to other units",
 	"author": "Michael Tsaban",
 	"license": "MIT",
-
 	"scripts": {
 		"lint": "eslint src --ext .js --ext .ts --ext .vue",
 		"test": "rm -fr coverage || (rmdir coverage /s /q | break) && vue-tsc --noEmit && vitest run",
@@ -12,11 +11,10 @@
 		"build": "npm run lint && npm run test && npm run compile",
 		"serve": "vite serve"
 	},
-
 	"devDependencies": {
 		"@types/firefox": "^0.0.31",
-		"@typescript-eslint/eslint-plugin": "^5.13.0",
-		"@typescript-eslint/parser": "^5.13.0",
+		"@typescript-eslint/eslint-plugin": "^5.14.0",
+		"@typescript-eslint/parser": "^5.14.0",
 		"@vitejs/plugin-vue": "^2.2.4",
 		"@vue/test-utils": "^2.0.0-rc.17",
 		"c8": "^7.11.0",
@@ -25,7 +23,7 @@
 		"jsdom": "^19.0.0",
 		"sass": "^1.49.9",
 		"vite": "^2.8.6",
-		"vitest": "^0.5.9",
+		"vitest": "^0.6.0",
 		"vue": "^3.2.31",
 		"vue-tsc": "^0.32.1"
 	}
