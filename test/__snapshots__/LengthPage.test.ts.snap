@@ -32,8 +32,8 @@ exports[`Component LengthPage > matches snapshot 1`] = `
     </tr>
   </tbody>
 </table>
-<div class=\\"wrapper-row\\" data-v-4279aa88=\\"\\">
-  <div class=\\"wrapper-column\\" data-v-4279aa88=\\"\\"><select class=\\"centered\\" data-v-4279aa88=\\"\\">
+<div class=\\"wrapper-row\\" data-v-6764e49b=\\"\\">
+  <div class=\\"wrapper-column\\" data-v-6764e49b=\\"\\"><select class=\\"centered\\" data-v-6764e49b=\\"\\">
       <option value=\\"סנטימטר\\">סנטימטר</option>
       <option value=\\"מטר\\">מטר</option>
       <option value=\\"קילומטר\\">קילומטר</option>
@@ -45,9 +45,9 @@ exports[`Component LengthPage > matches snapshot 1`] = `
       <option value=\\"ריס\\">ריס</option>
       <option value=\\"מיל\\">מיל</option>
       <option value=\\"פרסה\\">פרסה</option>
-    </select><input class=\\"conversion-input\\" size=\\"12\\" data-v-519321c2=\\"\\" data-v-4279aa88=\\"\\"></div>
-  <div class=\\"wrapper-column\\" data-v-4279aa88=\\"\\"> = </div>
-  <div class=\\"wrapper-column\\" data-v-4279aa88=\\"\\"><select class=\\"centered\\" data-v-4279aa88=\\"\\">
+    </select><input class=\\"conversion-input\\" size=\\"12\\" data-v-519321c2=\\"\\" data-v-6764e49b=\\"\\"></div>
+  <div class=\\"wrapper-column\\" data-v-6764e49b=\\"\\"> = </div>
+  <div class=\\"wrapper-column\\" data-v-6764e49b=\\"\\"><select class=\\"centered\\" data-v-6764e49b=\\"\\">
       <option value=\\"סנטימטר\\">סנטימטר</option>
       <option value=\\"מטר\\">מטר</option>
       <option value=\\"קילומטר\\">קילומטר</option>
@@ -59,6 +59,6 @@ exports[`Component LengthPage > matches snapshot 1`] = `
       <option value=\\"ריס\\">ריס</option>
       <option value=\\"מיל\\">מיל</option>
       <option value=\\"פרסה\\">פרסה</option>
-    </select><input class=\\"conversion-input\\" disabled=\\"\\" size=\\"12\\" data-v-519321c2=\\"\\" data-v-4279aa88=\\"\\"></div>
+    </select><input class=\\"conversion-input\\" disabled=\\"\\" size=\\"12\\" data-v-519321c2=\\"\\" data-v-6764e49b=\\"\\"></div>
 </div>"
 `;

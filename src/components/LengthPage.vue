@@ -1,5 +1,6 @@
 <script lang="ts">
 import { Ruler, Unit } from '../types'
+import CalculatorComponent from './CalculatorComponent.vue'
 import { defineComponent } from 'vue'
 import LengthTable from './LengthTable.vue'
 import SelectRabi from './SelectRabi.vue'
@@ -7,6 +8,7 @@ import { UnitValues } from '../helpers'
 
 export default defineComponent({
 	components: {
+		CalculatorComponent,
 		LengthTable,
 		SelectRabi,
 	},
@@ -45,5 +47,7 @@ export default defineComponent({
 	/>
 
 	<h6>שים לב: הסיט מחושב לפי שיטת הרמב"ם</h6>
-	<LengthTable :units="units" />
+	<LengthTable :units="units.filter(unit => !unit.hidden)" />
+
+	<CalculatorComponent :units="units" />
 </template>
