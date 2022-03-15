@@ -1,11 +1,9 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 import InputAmount from './InputAmount.vue'
+import { roundNum } from '../helpers'
 import SelectUnit from './SelectUnit.vue'
-import type { Unit } from './types'
-
-/* Rounds to 10 digits */
-const roundNum = (num: number) => Math.round(num * 1e10) / 1e10
+import type { Unit } from '../types'
 
 export default defineComponent({
 	components: {

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import LengthTable from '../src/components/LengthTable.vue'
 import { mount } from '@vue/test-utils'
-import type { Unit } from '../src/components/types'
+import type { Unit } from '../src/types'
 
 interface ColumnData {
 	unit: string

@@ -9,7 +9,7 @@ export default defineComponent({
 
 	data() {
 		return {
-			view: 'LengthPage',
+			page: 'Length',
 		}
 	},
 })
@@ -17,7 +17,7 @@ export default defineComponent({
 
 <template>
 	<h1>מחשבון יחידות תלמודיות</h1>
-	<LengthPage v-if="view === 'LengthPage'" />
+	<LengthPage v-if="page === 'Length'" />
 
 	<footer>© כל הזכויות שמורות למיכאל צבאן</footer>
 </template>

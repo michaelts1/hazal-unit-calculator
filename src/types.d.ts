@@ -3,3 +3,5 @@ export interface Unit extends Object {
 	name: string
 	value: number
 }
+
+export type Ruler = 'גרח' | 'חזון_איש'

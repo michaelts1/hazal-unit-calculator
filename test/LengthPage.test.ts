@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import LengthPage from '../src/components/LengthPage.vue'
 import { mount } from '@vue/test-utils'
+import type { Unit } from '../src/types'
 
 describe('Component LengthPage', () => {
 	it('exists', () => {
@@ -16,8 +17,8 @@ describe('Component LengthPage', () => {
 	it('responds to events emitted by SelectRabi', async () => {
 		const SelectRabi = wrapper.findComponent({ name: 'SelectRabi' })
 
-		expect(wrapper.vm.etzba).toBe(0.02) // Default
+		expect((wrapper.vm.units as Unit[])[3].value).toBe(0.02) // Default
 		SelectRabi.vm.$emit('ruler-change', 'חזון_איש')
-		expect(wrapper.vm.etzba).toBe(0.024) // New value
+		expect((wrapper.vm.units as Unit[])[3].value).toBe(0.024) // New value
 	})
 })
