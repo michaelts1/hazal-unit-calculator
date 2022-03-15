@@ -24,12 +24,12 @@ describe('Component SelectRabi', () => {
 	})
 
 	it('reacts to value changes', async () => {
-		const options = wrapper.findAll('option')
+		const select = wrapper.find('select')
 
-		await options[1].setSelected()
+		await select.setValue('חזון_איש')
 		expect(wrapper.vm.value).toBe('חזון_איש')
 
-		await options[0].setSelected()
+		await select.setValue('גרח')
 		expect(wrapper.vm.value).toBe('גרח')
 
 		const rulerChangeEvents = wrapper.emitted('ruler-change') as unknown[]
