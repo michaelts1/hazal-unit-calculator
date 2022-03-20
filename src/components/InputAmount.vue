@@ -102,6 +102,7 @@ export default defineComponent({
 
 <style scoped lang="scss">
 	.conversion-input {
+		direction: ltr;
 		margin: 1em 3em;
 
 		&.invalid {

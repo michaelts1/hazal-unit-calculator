@@ -49,4 +49,14 @@ describe('Component CalculatorComponent', () => {
 		input.vm.$emit('value-change', 10)
 		expect((wrapper.vm.input as Field).value).toBe(10) // New value
 	})
+
+	it('updates when the units prop changes', async () => {
+		const oldValue = (wrapper.vm.output as Field).value
+
+		const newUnits = JSON.parse(JSON.stringify(units))
+		newUnits[0].value *= 2 // Change base unit value
+		await wrapper.setProps({ units: newUnits })
+
+		expect((wrapper.vm.output as Field).value).toBe(oldValue * 2)
+	})
 })
