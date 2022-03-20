@@ -6,6 +6,7 @@ export default defineConfig({
 	plugins: [
 		vue(),
 	],
+	base: './',
 	root: './',
 	server: { open: true },
 
