@@ -1,4 +1,5 @@
 <script lang="ts">
+/** @todo Output doesn't update on ruler change (also add test) */
 import { defineComponent, PropType } from 'vue'
 import InputAmount from './InputAmount.vue'
 import { roundNum } from '../helpers'
