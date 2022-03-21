@@ -2,7 +2,10 @@ name: Publish Pages
 on:
   push:
       branches: 'master'
-      paths: 'src/**'
+      paths:
+        - 'src/**'
+        - 'public/**'
+
   workflow_dispatch:
 
 jobs:
