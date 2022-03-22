@@ -1,10 +1,33 @@
 <script lang="ts">
-import { Ruler, Unit } from '../types'
+import type { Ruler, Unit } from '../types'
 import CalculatorComponent from './CalculatorComponent.vue'
 import { defineComponent } from 'vue'
 import LengthTable from './LengthTable.vue'
+import { roundNum } from '../helpers'
 import SelectRabi from './SelectRabi.vue'
-import { UnitValues } from '../helpers'
+
+class UnitValues {
+	etzba: 0.024 | 0.02
+	tefach: number
+	sit: number
+	zeret: number
+	amah: number
+	ris: number
+	mil: number
+	parsa: number
+
+	constructor(ruler: Ruler) {
+		// Base unit is meter
+		this.etzba  = ruler === 'חזון_איש' ? 0.024 : 0.02
+		this.tefach = roundNum(4 * this.etzba)
+		this.sit    = roundNum(2 * this.tefach)
+		this.amah   = roundNum(6 * this.tefach)
+		this.zeret  = roundNum(0.5 * this.amah)
+		this.mil    = roundNum(2000 * this.amah)
+		this.parsa  = roundNum(4 * this.mil)
+		this.ris    = roundNum(2/15 * this.mil)
+	}
+}
 
 export default defineComponent({
 	components: {
