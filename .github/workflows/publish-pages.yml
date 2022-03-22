@@ -5,6 +5,7 @@ on:
       paths:
         - 'src/**'
         - 'public/**'
+        - 'index.html'
 
   workflow_dispatch:
 
