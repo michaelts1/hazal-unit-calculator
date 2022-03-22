@@ -16,8 +16,13 @@ export default defineComponent({
 </script>
 
 <template>
-	<h1>מחשבון יחידות תלמודיות</h1>
-	<LengthPage v-if="page === 'Length'" />
+	<header>
+		<h1>מחשבון יחידות תלמודיות</h1>
+	</header>
+
+	<article>
+		<LengthPage v-if="page === 'Length'" />
+	</article>
 
 	<footer>© כל הזכויות שמורות למיכאל צבאן</footer>
 </template>

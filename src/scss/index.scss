@@ -9,9 +9,17 @@
 }
 
 body {
+	background: #f9f9f9;
 	direction: rtl;
 	font-family: Arial, Helvetica, sans-serif;
 	margin: 0;
+}
+
+header {
+	border-bottom: 2px solid #ddd;
+	margin: 0 0 2em;
+	padding: 0;
+	width: 100%;
 }
 
 footer {
@@ -21,7 +29,6 @@ footer {
 	position: fixed;
 	right: 0;
 	text-align: center;
-	
 }
 
 h1 {
@@ -45,7 +52,7 @@ th, td {
 	width: 75px;
 }
 
-#app {
+article {
 	margin: 0 auto;
 	width: fit-content;
 }
