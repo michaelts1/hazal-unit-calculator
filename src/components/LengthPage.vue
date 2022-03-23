@@ -2,9 +2,9 @@
 import type { Ruler, Unit } from '../types'
 import CalculatorComponent from './CalculatorComponent.vue'
 import { defineComponent } from 'vue'
-import LengthTable from './LengthTable.vue'
 import { roundNum } from '../helpers'
 import SelectRabi from './SelectRabi.vue'
+import UnitTable from './UnitTable.vue'
 
 class UnitValues {
 	etzba: .024 | .02
@@ -32,7 +32,7 @@ class UnitValues {
 export default defineComponent({
 	components: {
 		CalculatorComponent,
-		LengthTable,
+		UnitTable,
 		SelectRabi,
 	},
 
@@ -60,6 +60,25 @@ export default defineComponent({
 			]
 		},
 	},
+
+	methods: {
+		formatNum(num: number) {
+			let unit = ' מטר'
+
+			if (num < .01) {
+				num *= 1000
+				unit = ' מ"מ'
+			} else if (num < 1) {
+				num *= 100
+				unit = ' ס"מ'
+			} else if (num > 1000) {
+				num /= 1000
+				unit = ' ק"מ'
+			}
+
+			return roundNum(num) + unit
+		},
+	},
 })
 </script>
 
@@ -70,7 +89,10 @@ export default defineComponent({
 	/>
 
 	<h6>שים לב: הסיט מחושב לפי שיטת הרמב"ם</h6>
-	<LengthTable :units="units.filter(unit => !unit.hidden)" />
+	<UnitTable
+		:units="units.filter(unit => !unit.hidden)"
+		:format="formatNum"
+	/>
 
 	<CalculatorComponent :units="units" />
 </template>

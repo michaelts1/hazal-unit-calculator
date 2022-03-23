@@ -1,0 +1,22 @@
+// Vitest Snapshot v1
+
+exports[`Component UnitTable > matches snapshot 1`] = `
+"<table data-v-2f1b50ac=\\"\\">
+  <thead data-v-2f1b50ac=\\"\\">
+    <tr data-v-2f1b50ac=\\"\\">
+      <th data-v-2f1b50ac=\\"\\">אצבע</th>
+      <th data-v-2f1b50ac=\\"\\">סנטימטר</th>
+      <th data-v-2f1b50ac=\\"\\">טפח</th>
+      <th data-v-2f1b50ac=\\"\\">זרת</th>
+    </tr>
+  </thead>
+  <tbody data-v-2f1b50ac=\\"\\">
+    <tr data-v-2f1b50ac=\\"\\">
+      <td data-v-2f1b50ac=\\"\\">5 מ\\"מ</td>
+      <td data-v-2f1b50ac=\\"\\">10 ס\\"מ</td>
+      <td data-v-2f1b50ac=\\"\\">4 מטר</td>
+      <td data-v-2f1b50ac=\\"\\">4 ק\\"מ</td>
+    </tr>
+  </tbody>
+</table>"
+`;

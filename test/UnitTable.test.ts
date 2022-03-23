@@ -1,11 +1,12 @@
 import { describe, expect, it } from 'vitest'
-import LengthTable from '../src/components/LengthTable.vue'
 import { mount } from '@vue/test-utils'
+import { roundNum } from '../src/helpers'
 import type { Unit } from '../src/types'
+import UnitTable from '../src/components/UnitTable.vue'
 
-describe('Component LengthTable', () => {
+describe('Component UnitTable', () => {
 	it('exists', () => {
-		expect(LengthTable).toBeTruthy()
+		expect(UnitTable).toBeTruthy()
 	})
 
 	const units: Unit[] = [
@@ -14,9 +15,25 @@ describe('Component LengthTable', () => {
 		{ hidden: false, name: 'טפח', value: 4 },
 		{ hidden: false, name: 'זרת', value: 4000 },
 	]
-	const wrapper = mount(LengthTable, {
+	const wrapper = mount(UnitTable, {
 		props: {
 			units,
+			format: function formatNum(num: number): string {
+				let unit = ' מטר'
+
+				if (num < .01) {
+					num *= 1000
+					unit = ' מ"מ'
+				} else if (num < 1) {
+					num *= 100
+					unit = ' ס"מ'
+				} else if (num > 1000) {
+					num /= 1000
+					unit = ' ק"מ'
+				}
+
+				return roundNum(num) + unit
+			},
 		},
 	})
 

@@ -1,6 +1,5 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { roundNum } from '../helpers'
 import type { Unit } from '../types'
 
 export default defineComponent({
@@ -9,29 +8,9 @@ export default defineComponent({
 			type: Array as PropType<Unit[]>,
 			required: true,
 		},
-	},
-
-	methods: {
-		/**
-		 * Formats unit measurements
-		 * @param {number} num
-		 * @returns {string}
-		 */
-		formatNum(num: number): string {
-			let unit = ' מטר'
-
-			if (num < .01) {
-				num *= 1000
-				unit = ' מ"מ'
-			} else if (num < 1) {
-				num *= 100
-				unit = ' ס"מ'
-			} else if (num > 1000) {
-				num /= 1000
-				unit = ' ק"מ'
-			}
-
-			return roundNum(num) + unit
+		format: {
+			type: Function as PropType<(num: number) => string>,
+			required: true,
 		},
 	},
 })
@@ -55,7 +34,7 @@ export default defineComponent({
 					v-for="{ value } in units"
 					:key="value"
 				>
-					{{ formatNum(value) }}
+					{{ format(value) }}
 				</td>
 			</tr>
 		</tbody>

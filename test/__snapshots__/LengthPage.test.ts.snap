@@ -6,29 +6,29 @@ exports[`Component LengthPage > matches snapshot 1`] = `
   <option value=\\"חזון_איש\\" data-v-2eca11fc=\\"\\"> חזון איש </option>
 </select>
 <h6>שים לב: הסיט מחושב לפי שיטת הרמב\\"ם</h6>
-<table data-v-4279aa88=\\"\\">
-  <thead data-v-4279aa88=\\"\\">
-    <tr data-v-4279aa88=\\"\\">
-      <th data-v-4279aa88=\\"\\">אצבע</th>
-      <th data-v-4279aa88=\\"\\">טפח</th>
-      <th data-v-4279aa88=\\"\\">סיט</th>
-      <th data-v-4279aa88=\\"\\">זרת</th>
-      <th data-v-4279aa88=\\"\\">אמה</th>
-      <th data-v-4279aa88=\\"\\">ריס</th>
-      <th data-v-4279aa88=\\"\\">מיל</th>
-      <th data-v-4279aa88=\\"\\">פרסה</th>
+<table data-v-2f1b50ac=\\"\\">
+  <thead data-v-2f1b50ac=\\"\\">
+    <tr data-v-2f1b50ac=\\"\\">
+      <th data-v-2f1b50ac=\\"\\">אצבע</th>
+      <th data-v-2f1b50ac=\\"\\">טפח</th>
+      <th data-v-2f1b50ac=\\"\\">סיט</th>
+      <th data-v-2f1b50ac=\\"\\">זרת</th>
+      <th data-v-2f1b50ac=\\"\\">אמה</th>
+      <th data-v-2f1b50ac=\\"\\">ריס</th>
+      <th data-v-2f1b50ac=\\"\\">מיל</th>
+      <th data-v-2f1b50ac=\\"\\">פרסה</th>
     </tr>
   </thead>
-  <tbody data-v-4279aa88=\\"\\">
-    <tr data-v-4279aa88=\\"\\">
-      <td data-v-4279aa88=\\"\\">2 ס\\"מ</td>
-      <td data-v-4279aa88=\\"\\">8 ס\\"מ</td>
-      <td data-v-4279aa88=\\"\\">16 ס\\"מ</td>
-      <td data-v-4279aa88=\\"\\">24 ס\\"מ</td>
-      <td data-v-4279aa88=\\"\\">48 ס\\"מ</td>
-      <td data-v-4279aa88=\\"\\">128 מטר</td>
-      <td data-v-4279aa88=\\"\\">960 מטר</td>
-      <td data-v-4279aa88=\\"\\">3.84 ק\\"מ</td>
+  <tbody data-v-2f1b50ac=\\"\\">
+    <tr data-v-2f1b50ac=\\"\\">
+      <td data-v-2f1b50ac=\\"\\">2 ס\\"מ</td>
+      <td data-v-2f1b50ac=\\"\\">8 ס\\"מ</td>
+      <td data-v-2f1b50ac=\\"\\">16 ס\\"מ</td>
+      <td data-v-2f1b50ac=\\"\\">24 ס\\"מ</td>
+      <td data-v-2f1b50ac=\\"\\">48 ס\\"מ</td>
+      <td data-v-2f1b50ac=\\"\\">128 מטר</td>
+      <td data-v-2f1b50ac=\\"\\">960 מטר</td>
+      <td data-v-2f1b50ac=\\"\\">3.84 ק\\"מ</td>
     </tr>
   </tbody>
 </table>
