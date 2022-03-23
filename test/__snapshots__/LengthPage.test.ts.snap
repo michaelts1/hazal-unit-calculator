@@ -1,9 +1,9 @@
 // Vitest Snapshot v1
 
 exports[`Component LengthPage > matches snapshot 1`] = `
-"<label for=\\"ruler-select\\">שיטת מדידה: </label><select id=\\"ruler-select\\">
-  <option value=\\"גרח\\"> גר\\"ח (רב חיים נאה) </option>
-  <option value=\\"חזון_איש\\"> חזון איש </option>
+"<label for=\\"ruler-select\\" data-v-2eca11fc=\\"\\">שיטת מדידה:</label><select id=\\"ruler-select\\" class=\\"form-select\\" data-v-2eca11fc=\\"\\">
+  <option value=\\"גרח\\" data-v-2eca11fc=\\"\\"> גר\\"ח (רב חיים נאה) </option>
+  <option value=\\"חזון_איש\\" data-v-2eca11fc=\\"\\"> חזון איש </option>
 </select>
 <h6>שים לב: הסיט מחושב לפי שיטת הרמב\\"ם</h6>
 <table data-v-4279aa88=\\"\\">
@@ -33,7 +33,7 @@ exports[`Component LengthPage > matches snapshot 1`] = `
   </tbody>
 </table>
 <div class=\\"wrapper-row\\" data-v-6764e49b=\\"\\">
-  <div class=\\"wrapper-column\\" data-v-6764e49b=\\"\\"><select class=\\"centered\\" data-v-6764e49b=\\"\\">
+  <div class=\\"wrapper-column\\" data-v-6764e49b=\\"\\"><select class=\\"form-select\\" data-v-6764e49b=\\"\\">
       <option value=\\"סנטימטר\\">סנטימטר</option>
       <option value=\\"מטר\\">מטר</option>
       <option value=\\"קילומטר\\">קילומטר</option>
@@ -45,9 +45,9 @@ exports[`Component LengthPage > matches snapshot 1`] = `
       <option value=\\"ריס\\">ריס</option>
       <option value=\\"מיל\\">מיל</option>
       <option value=\\"פרסה\\">פרסה</option>
-    </select><input class=\\"conversion-input\\" size=\\"12\\" data-v-519321c2=\\"\\" data-v-6764e49b=\\"\\"></div>
+    </select><input class=\\"conversion-input form-control form-control-sm\\" size=\\"1\\" data-v-519321c2=\\"\\" data-v-6764e49b=\\"\\"></div>
   <div class=\\"wrapper-column\\" data-v-6764e49b=\\"\\"> = </div>
-  <div class=\\"wrapper-column\\" data-v-6764e49b=\\"\\"><select class=\\"centered\\" data-v-6764e49b=\\"\\">
+  <div class=\\"wrapper-column\\" data-v-6764e49b=\\"\\"><select class=\\"form-select\\" data-v-6764e49b=\\"\\">
       <option value=\\"סנטימטר\\">סנטימטר</option>
       <option value=\\"מטר\\">מטר</option>
       <option value=\\"קילומטר\\">קילומטר</option>
@@ -59,6 +59,6 @@ exports[`Component LengthPage > matches snapshot 1`] = `
       <option value=\\"ריס\\">ריס</option>
       <option value=\\"מיל\\">מיל</option>
       <option value=\\"פרסה\\">פרסה</option>
-    </select><input class=\\"conversion-input\\" disabled=\\"\\" size=\\"12\\" data-v-519321c2=\\"\\" data-v-6764e49b=\\"\\"></div>
+    </select><input class=\\"conversion-input form-control form-control-sm\\" disabled=\\"\\" size=\\"1\\" data-v-519321c2=\\"\\" data-v-6764e49b=\\"\\"></div>
 </div>"
 `;

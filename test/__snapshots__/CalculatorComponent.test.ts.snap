@@ -2,20 +2,20 @@
 
 exports[`Component CalculatorComponent > matches snapshot 1`] = `
 "<div class=\\"wrapper-row\\" data-v-6764e49b=\\"\\">
-  <div class=\\"wrapper-column\\" data-v-6764e49b=\\"\\"><select class=\\"centered\\" data-v-6764e49b=\\"\\">
+  <div class=\\"wrapper-column\\" data-v-6764e49b=\\"\\"><select class=\\"form-select\\" data-v-6764e49b=\\"\\">
       <option value=\\"אצבע\\">אצבע</option>
       <option value=\\"סנטימטר\\">סנטימטר</option>
       <option value=\\"אמה\\">אמה</option>
       <option value=\\"טפח\\">טפח</option>
       <option value=\\"זרת\\">זרת</option>
-    </select><input class=\\"conversion-input\\" size=\\"12\\" data-v-519321c2=\\"\\" data-v-6764e49b=\\"\\"></div>
+    </select><input class=\\"conversion-input form-control form-control-sm\\" size=\\"1\\" data-v-519321c2=\\"\\" data-v-6764e49b=\\"\\"></div>
   <div class=\\"wrapper-column\\" data-v-6764e49b=\\"\\"> = </div>
-  <div class=\\"wrapper-column\\" data-v-6764e49b=\\"\\"><select class=\\"centered\\" data-v-6764e49b=\\"\\">
+  <div class=\\"wrapper-column\\" data-v-6764e49b=\\"\\"><select class=\\"form-select\\" data-v-6764e49b=\\"\\">
       <option value=\\"אצבע\\">אצבע</option>
       <option value=\\"סנטימטר\\">סנטימטר</option>
       <option value=\\"אמה\\">אמה</option>
       <option value=\\"טפח\\">טפח</option>
       <option value=\\"זרת\\">זרת</option>
-    </select><input class=\\"conversion-input\\" disabled=\\"\\" size=\\"12\\" data-v-519321c2=\\"\\" data-v-6764e49b=\\"\\"></div>
+    </select><input class=\\"conversion-input form-control form-control-sm\\" disabled=\\"\\" size=\\"1\\" data-v-519321c2=\\"\\" data-v-6764e49b=\\"\\"></div>
 </div>"
 `;

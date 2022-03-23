@@ -20,10 +20,11 @@ export default defineComponent({
 </script>
 
 <template>
-	<label for="ruler-select">שיטת מדידה: </label>
+	<label for="ruler-select">שיטת מדידה:</label>
 	<select
 		id="ruler-select"
 		v-model="value"
+		class="form-select"
 		@change="$emit('ruler-change', value)"
 	>
 		<option value="גרח">
@@ -34,3 +35,12 @@ export default defineComponent({
 		</option>
 	</select>
 </template>
+
+<style lang="scss" scoped>
+	#ruler-select {
+		display: inline-block;
+		margin: 0 5px;
+		padding-right: 30px;
+		width: unset;
+	}
+</style>

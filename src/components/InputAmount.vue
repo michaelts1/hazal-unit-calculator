@@ -112,6 +112,7 @@ export default defineComponent({
 			}
 		}
 		&:disabled {
+			background: #f5f5f5;
 			color: black;
 		}
 	}

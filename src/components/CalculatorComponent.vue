@@ -83,13 +83,14 @@ export default defineComponent({
 	<div class="wrapper-row">
 		<div class="wrapper-column">
 			<SelectUnit
-				class="centered"
+				class="form-select"
 				:unit-names="unitNames"
 				:selected-unit="input.unit"
 				@value-change="newUnit => InputUnitChanged(newUnit)"
 			/>
 			<InputAmount
-				size="12"
+				class="form-control form-control-sm"
+				size="1"
 				:value="input.value"
 				@value-change="inputValueChanged"
 			/>
@@ -99,13 +100,14 @@ export default defineComponent({
 		</div>
 		<div class="wrapper-column">
 			<SelectUnit
-				class="centered"
+				class="form-select"
 				:unit-names="unitNames"
 				:selected-unit="output.unit"
 				@value-change="newUnit => OutputUnitChanged(newUnit)"
 			/>
 			<InputAmount
-				size="12"
+				class="form-control form-control-sm"
+				size="1"
 				:disabled="true"
 				:value="output.value"
 			/>
@@ -114,7 +116,7 @@ export default defineComponent({
 </template>
 
 <style scoped>
-	.centered {
+	.form-select {
 		margin: 0 auto;
 		text-align: center;
 	}
@@ -130,5 +132,6 @@ export default defineComponent({
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		padding: 0 1em;
 	}
 </style>
