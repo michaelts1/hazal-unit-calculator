@@ -8,7 +8,7 @@ export default defineComponent({
 			type: Array as PropType<Unit[]>,
 			required: true,
 		},
-		format: {
+		formatNum: {
 			type: Function as PropType<(num: number) => string>,
 			required: true,
 		},
@@ -34,7 +34,7 @@ export default defineComponent({
 					v-for="{ value } in units"
 					:key="value"
 				>
-					{{ format(value) }}
+					{{ formatNum(value) }}
 				</td>
 			</tr>
 		</tbody>
