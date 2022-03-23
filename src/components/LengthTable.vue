@@ -20,7 +20,7 @@ export default defineComponent({
 		formatNum(num: number): string {
 			let unit = ' מטר'
 
-			if (num < 0.01) {
+			if (num < .01) {
 				num *= 1000
 				unit = ' מ"מ'
 			} else if (num < 1) {

@@ -14,8 +14,8 @@ describe('Component CalculatorComponent', () => {
 	})
 
 	const units: Unit[] = [
-		{ hidden: false, name: 'אצבע', value: 0.005 },
-		{ hidden: false, name: 'סנטימטר', value: 0.1 },
+		{ hidden: false, name: 'אצבע', value: .005 },
+		{ hidden: false, name: 'סנטימטר', value: .1 },
 		{ hidden: true, name: 'אמה', value: 2 },
 		{ hidden: false, name: 'טפח', value: 4 },
 		{ hidden: false, name: 'זרת', value: 4000 },

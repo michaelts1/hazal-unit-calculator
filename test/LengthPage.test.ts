@@ -16,7 +16,7 @@ describe('Component LengthPage', () => {
 
 	it('should have the correct values', async () => {
 		const current = (wrapper.vm.units as Unit[]).slice(3)
-		const expected = [ 0.02, 0.08, 0.16, 0.24, 0.48, 128, 960, 3840 ]
+		const expected = [ .02, .08, .16, .24, .48, 128, 960, 3840 ]
 
 		expect(current.map(unit => unit.value)).toEqual(expected)
 	})
@@ -25,6 +25,6 @@ describe('Component LengthPage', () => {
 		const SelectRabi = wrapper.findComponent({ name: 'SelectRabi' })
 
 		SelectRabi.vm.$emit('ruler-change', 'חזון_איש')
-		expect((wrapper.vm.units as Unit[])[3].value).toBe(0.024) // New value
+		expect((wrapper.vm.units as Unit[])[3].value).toBe(.024) // New value
 	})
 })

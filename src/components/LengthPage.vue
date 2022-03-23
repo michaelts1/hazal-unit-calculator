@@ -7,7 +7,7 @@ import { roundNum } from '../helpers'
 import SelectRabi from './SelectRabi.vue'
 
 class UnitValues {
-	etzba: 0.024 | 0.02
+	etzba: .024 | .02
 	tefach: number
 	sit: number
 	zeret: number
@@ -18,11 +18,11 @@ class UnitValues {
 
 	constructor(ruler: Ruler) {
 		// Base unit is meter
-		this.etzba  = ruler === 'חזון_איש' ? 0.024 : 0.02
+		this.etzba  = ruler === 'חזון_איש' ? .024 : .02
 		this.tefach = roundNum(4 * this.etzba)
 		this.sit    = roundNum(2 * this.tefach)
 		this.amah   = roundNum(6 * this.tefach)
-		this.zeret  = roundNum(0.5 * this.amah)
+		this.zeret  = roundNum(.5 * this.amah)
 		this.mil    = roundNum(2000 * this.amah)
 		this.parsa  = roundNum(4 * this.mil)
 		this.ris    = roundNum(2/15 * this.mil)
@@ -46,7 +46,7 @@ export default defineComponent({
 		units(): Unit[] {
 			const unitValues = new UnitValues(this.ruler)
 			return [
-				{ hidden: true, name: 'סנטימטר', value: 0.01 },
+				{ hidden: true, name: 'סנטימטר', value: .01 },
 				{ hidden: true, name: 'מטר', value: 1 },
 				{ hidden: true, name: 'קילומטר', value: 1000 },
 				{ hidden: false, name: 'אצבע', value: unitValues.etzba },

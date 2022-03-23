@@ -9,8 +9,8 @@ describe('Component LengthTable', () => {
 	})
 
 	const units: Unit[] = [
-		{ hidden: false, name: 'אצבע', value: 0.005 },
-		{ hidden: false, name: 'סנטימטר', value: 0.1 },
+		{ hidden: false, name: 'אצבע', value: .005 },
+		{ hidden: false, name: 'סנטימטר', value: .1 },
 		{ hidden: false, name: 'טפח', value: 4 },
 		{ hidden: false, name: 'זרת', value: 4000 },
 	]
@@ -34,7 +34,7 @@ describe('Component LengthTable', () => {
 		expect(wrapper.text()).toContain('4 מטר')
 		expect(wrapper.text()).toContain('4 ק"מ')
 
-		units[0].value = 0.5
+		units[0].value = .5
 		await wrapper.vm.$forceUpdate() // $forceUpdate is async (the type definition is wrong)
 		expect(wrapper.text()).not.toContain('5 מ"מ')
 		expect(wrapper.text()).toContain('50 ס"מ')
