@@ -70,10 +70,6 @@ describe('Component InputAmount, disabled', () => {
 		expect(input.attributes()).toHaveProperty('disabled')
 	})
 
-	it('matches snapshot', () => {
-		expect(wrapper.html()).toMatchSnapshot()
-	})
-
 	it("doesn't reacts value changes", async () => {
 		expect(wrapper.vm.domValue).toBe('0')
 

@@ -19,10 +19,6 @@ describe('Component SelectRabi', () => {
 		expect(wrapper.findAll('option')).toHaveLength(2)
 	})
 
-	it('matches snapshot', () => {
-		expect(wrapper.html()).toMatchSnapshot()
-	})
-
 	it('reacts to value changes', async () => {
 		const select = wrapper.find('select')
 

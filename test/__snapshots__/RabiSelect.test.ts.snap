@@ -1,8 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`Component SelectRabi > matches snapshot 1`] = `
-"<label for=\\"ruler-select\\" data-v-2eca11fc=\\"\\">שיטת מדידה:</label><select id=\\"ruler-select\\" class=\\"form-select\\" data-v-2eca11fc=\\"\\">
-  <option value=\\"גרח\\" data-v-2eca11fc=\\"\\"> גר\\"ח (רב חיים נאה) </option>
-  <option value=\\"חזון_איש\\" data-v-2eca11fc=\\"\\"> חזון איש </option>
-</select>"
-`;

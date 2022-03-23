@@ -20,10 +20,6 @@ describe('Component SelectUnit', () => {
 		expect(wrapper.findAll('option')).toHaveLength(unitNames.length)
 	})
 
-	it('matches snapshot', () => {
-		expect(wrapper.html()).toMatchSnapshot()
-	})
-
 	it('reacts to value changes', async () => {
 		expect(wrapper.vm.selectedUnit).toBe(unitNames[0])
 

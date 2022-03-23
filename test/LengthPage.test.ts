@@ -10,10 +10,6 @@ describe('Component LengthPage', () => {
 
 	const wrapper = mount(LengthPage)
 
-	it('matches snapshot', () => {
-		expect(wrapper.html()).toMatchSnapshot()
-	})
-
 	it('should have the correct values', async () => {
 		const current = (wrapper.vm.units as Unit[]).slice(3)
 		const expected = [ .02, .08, .16, .24, .48, 128, 960, 3840 ]

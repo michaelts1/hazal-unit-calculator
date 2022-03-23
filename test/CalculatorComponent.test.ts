@@ -26,10 +26,6 @@ describe('Component CalculatorComponent', () => {
 		},
 	})
 
-	it('matches snapshot', () => {
-		expect(wrapper.html()).toMatchSnapshot()
-	})
-
 	it('responds to events emitted by SelectUnit', () => {
 		const [ input, output ] = wrapper.findAllComponents({ name: 'SelectUnit' })
 

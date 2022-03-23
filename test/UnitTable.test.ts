@@ -42,10 +42,6 @@ describe('Component UnitTable', () => {
 		expect(wrapper.findAll('th')).toHaveLength(units.length)
 	})
 
-	it('matches snapshot', () => {
-		expect(wrapper.html()).toMatchSnapshot()
-	})
-
 	it('lists the correct values and reacts to value changes', async () => {
 		expect(wrapper.text()).toContain('5 מ"מ')
 		expect(wrapper.text()).toContain('4 מטר')

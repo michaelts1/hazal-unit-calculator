@@ -1,8 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`Component SelectUnit > matches snapshot 1`] = `
-"<select>
-  <option value=\\"טפח\\">טפח</option>
-  <option value=\\"אצבע\\">אצבע</option>
-</select>"
-`;
