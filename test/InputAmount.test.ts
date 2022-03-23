@@ -21,10 +21,6 @@ describe('Component InputAmount, enabled', () => {
 		expect(input.classes()).not.contain('invalid')
 	})
 
-	it('matches snapshot', () => {
-		expect(wrapper.html()).toMatchSnapshot()
-	})
-
 	it('reacts only to valid value changes', async () => {
 		// Yes, dom value is always a string
 		expect(wrapper.vm.domValue).toBe('0')
