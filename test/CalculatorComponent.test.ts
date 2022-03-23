@@ -23,6 +23,10 @@ describe('Component CalculatorComponent', () => {
 	const wrapper = mount(CalculatorComponent, {
 		props: {
 			units,
+			defaultUnits: {
+				input: 'טפח',
+				output: 'סנטימטר',
+			},
 		},
 	})
 

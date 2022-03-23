@@ -39,6 +39,10 @@ export default defineComponent({
 	data() {
 		return {
 			ruler: 'גרח' as Ruler,
+			defaultUnits: {
+				input: 'טפח',
+				output: 'סנטימטר',
+			},
 		}
 	},
 
@@ -94,5 +98,8 @@ export default defineComponent({
 		:format="formatNum"
 	/>
 
-	<CalculatorComponent :units="units" />
+	<CalculatorComponent
+		:units="units"
+		:default-units="defaultUnits"
+	/>
 </template>

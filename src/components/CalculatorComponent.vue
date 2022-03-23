@@ -16,12 +16,16 @@ export default defineComponent({
 			type: Array as PropType<Unit[]>,
 			required: true,
 		},
+		defaultUnits: {
+			type: Object as PropType<{input: string, output: string }>,
+			required: true,
+		},
 	},
 
 	data() {
 		return {
-			input: { unit: 'טפח', value: 0 },
-			output: { unit: 'סנטימטר', value: 0 },
+			input: { unit: this.defaultUnits.input, value: 0 },
+			output: { unit: this.defaultUnits.output, value: 0 },
 		}
 	},
 
