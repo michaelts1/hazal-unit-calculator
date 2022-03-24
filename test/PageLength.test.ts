@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest'
-import LengthPage from '../src/components/LengthPage.vue'
 import { mount } from '@vue/test-utils'
+import PageLength from '../src/components/PageLength.vue'
 import type { Unit } from '../src/types'
 
-describe('Component LengthPage', () => {
+describe('Component PageLength', () => {
 	it('exists', () => {
-		expect(LengthPage).toBeTruthy()
+		expect(PageLength).toBeTruthy()
 	})
 
-	const wrapper = mount(LengthPage)
+	const wrapper = mount(PageLength)
 
 	it('should have the correct values', async () => {
 		const current = (wrapper.vm.units as Unit[]).slice(3)

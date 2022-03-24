@@ -4,7 +4,7 @@ import CalculatorComponent from './CalculatorComponent.vue'
 import { defineComponent } from 'vue'
 import { roundNum } from '../helpers'
 import SelectRabi from './SelectRabi.vue'
-import UnitTable from './UnitTable.vue'
+import TableGeneric from './TableGeneric.vue'
 
 class UnitValues {
 	etzba: .024 | .02
@@ -32,8 +32,8 @@ class UnitValues {
 export default defineComponent({
 	components: {
 		CalculatorComponent,
-		UnitTable,
 		SelectRabi,
+		TableGeneric,
 	},
 
 	data() {
@@ -93,9 +93,9 @@ export default defineComponent({
 	/>
 
 	<h6>שים לב: הסיט מחושב לפי שיטת הרמב"ם</h6>
-	<UnitTable
+	<TableGeneric
 		:units="units.filter(unit => !unit.hidden)"
-		:format="formatNum"
+		:format-num="formatNum"
 	/>
 
 	<CalculatorComponent

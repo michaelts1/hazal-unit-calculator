@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { roundNum } from '../src/helpers'
+import TableGeneric from '../src/components/TableGeneric.vue'
 import type { Unit } from '../src/types'
-import UnitTable from '../src/components/UnitTable.vue'
 
-describe('Component UnitTable', () => {
+describe('Component TableGeneric', () => {
 	it('exists', () => {
-		expect(UnitTable).toBeTruthy()
+		expect(TableGeneric).toBeTruthy()
 	})
 
 	const units: Unit[] = [
@@ -15,10 +15,10 @@ describe('Component UnitTable', () => {
 		{ hidden: false, name: 'טפח', value: 4 },
 		{ hidden: false, name: 'זרת', value: 4000 },
 	]
-	const wrapper = mount(UnitTable, {
+	const wrapper = mount(TableGeneric, {
 		props: {
 			units,
-			format: function formatNum(num: number): string {
+			formatNum(num: number): string {
 				let unit = ' מטר'
 
 				if (num < .01) {

@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
-import LengthPage from './components/LengthPage.vue'
+import PageLength from './components/PageLength.vue'
 
 export default defineComponent({
 	components: {
-		LengthPage,
+		PageLength,
 	},
 
 	data() {
@@ -21,7 +21,7 @@ export default defineComponent({
 	</header>
 
 	<article>
-		<LengthPage v-if="page === 'Length'" />
+		<PageLength v-if="page === 'Length'" />
 	</article>
 
 	<footer>© כל הזכויות שמורות למיכאל צבאן</footer>
