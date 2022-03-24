@@ -3,17 +3,17 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
 	props: {
-		defaultRuler: {
+		defaultPage: {
 			type: String,
-			default: 'גרח',
+			default: 'length',
 		},
 	},
 
-	emits: ['ruler-change'],
+	emits: ['page-change'],
 
 	data() {
 		return {
-			value: this.defaultRuler,
+			value: this.defaultPage,
 		}
 	},
 })
@@ -21,25 +21,25 @@ export default defineComponent({
 
 <template>
 	<div>
-		<label for="ruler-select">שיטת מדידה:</label>
+		<label for="page-select">תחום:</label>
 		<select
-			id="ruler-select"
+			id="page-select"
 			v-model="value"
 			class="form-select"
-			@change="$emit('ruler-change', value)"
+			@change="$emit('page-change', value)"
 		>
-			<option value="גרח">
-				גר"ח (רב חיים נאה)
+			<option value="length">
+				מרחק
 			</option>
-			<option value="חזון_איש">
-				חזון איש
+			<option value="volume">
+				נפח
 			</option>
 		</select>
 	</div>
 </template>
 
 <style lang="scss" scoped>
-	#ruler-select {
+	#page-select {
 		display: inline-block;
 		margin: 0 5px;
 		padding-right: 30px;

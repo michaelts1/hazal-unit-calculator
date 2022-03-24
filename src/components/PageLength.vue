@@ -1,9 +1,8 @@
 <script lang="ts">
+import { defineComponent, PropType } from 'vue'
 import type { Ruler, Unit } from '../types'
 import CalculatorComponent from './CalculatorComponent.vue'
-import { defineComponent } from 'vue'
 import { roundNum } from '../helpers'
-import SelectRabi from './SelectRabi.vue'
 import TableGeneric from './TableGeneric.vue'
 
 class UnitValues {
@@ -32,13 +31,18 @@ class UnitValues {
 export default defineComponent({
 	components: {
 		CalculatorComponent,
-		SelectRabi,
 		TableGeneric,
+	},
+
+	props: {
+		ruler: {
+			type: String as PropType<Ruler>,
+			required: true,
+		},
 	},
 
 	data() {
 		return {
-			ruler: 'גרח' as Ruler,
 			defaultUnits: {
 				input: 'טפח',
 				output: 'סנטימטר',
@@ -87,11 +91,6 @@ export default defineComponent({
 </script>
 
 <template>
-	<SelectRabi
-		:default-ruler="ruler"
-		@ruler-change="newRuler => ruler = newRuler"
-	/>
-
 	<h6>שים לב: הסיט מחושב לפי שיטת הרמב"ם</h6>
 	<TableGeneric
 		:units="units.filter(unit => !unit.hidden)"

@@ -1,15 +1,22 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import PageLength from './components/PageLength.vue'
+import PageVolume from './components/PageVolume.vue'
+import SelectPage from './components/SelectPage.vue'
+import SelectRabi from './components/SelectRabi.vue'
 
 export default defineComponent({
 	components: {
 		PageLength,
+		PageVolume,
+		SelectPage,
+		SelectRabi,
 	},
 
 	data() {
 		return {
-			page: 'Length',
+			page: 'length',
+			ruler: 'גרח',
 		}
 	},
 })
@@ -21,8 +28,32 @@ export default defineComponent({
 	</header>
 
 	<article>
-		<PageLength v-if="page === 'Length'" />
+		<SelectPage
+			class="select"
+			:default-page="page"
+			@page-change="newPage => page = newPage"
+		/>
+		<SelectRabi
+			class="select"
+			:default-ruler="ruler"
+			@ruler-change="newRuler => ruler = newRuler"
+		/>
+
+		<PageLength
+			v-if="page === 'length'"
+			:ruler="ruler"
+		/>
+		<PageVolume
+			v-else-if="page === 'volume'"
+			:ruler="ruler"
+		/>
 	</article>
 
 	<footer>© כל הזכויות שמורות למיכאל צבאן</footer>
 </template>
+
+<style lang="scss" scoped>
+	.select {
+		margin: 5px 0;
+	}
+</style>

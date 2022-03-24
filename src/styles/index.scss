@@ -57,7 +57,7 @@ table {
 
 th, td {
 	@include table-border;
-	padding: .25em;
+	padding: .25em .5em;
 	text-align: center;
-	width: 85px;
+	width: fit-content;
 }
