@@ -21,20 +21,20 @@ export default defineComponent({
 		<thead>
 			<tr>
 				<th
-					v-for="{ name } in units"
-					:key="name"
+					v-for="unit in units"
+					:key="unit.name"
 				>
-					{{ name }}
+					{{ unit.name }}
 				</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td
-					v-for="{ value } in units"
-					:key="value"
+					v-for="unit in units"
+					:key="unit.name"
 				>
-					{{ formatNum(value) }}
+					{{ formatNum(unit.value) }}
 				</td>
 			</tr>
 		</tbody>

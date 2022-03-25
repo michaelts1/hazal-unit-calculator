@@ -20,7 +20,7 @@ export default defineComponent({
 </script>
 
 <template>
-	<div>
+	<span>
 		<label for="page-select">תחום:</label>
 		<select
 			id="page-select"
@@ -35,7 +35,7 @@ export default defineComponent({
 				נפח
 			</option>
 		</select>
-	</div>
+	</span>
 </template>
 
 <style lang="scss" scoped>

@@ -27,7 +27,7 @@ export default defineComponent({
 		<h1>מחשבון יחידות תלמודיות</h1>
 	</header>
 
-	<article>
+	<div class="centered">
 		<SelectPage
 			class="select"
 			:default-page="page"
@@ -38,7 +38,9 @@ export default defineComponent({
 			:default-ruler="ruler"
 			@ruler-change="newRuler => ruler = newRuler"
 		/>
+	</div>
 
+	<article class="centered">
 		<PageLength
 			v-if="page === 'length'"
 			:ruler="ruler"
@@ -53,7 +55,11 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
+	.centered {
+		margin: 0 auto;
+		width: fit-content;
+	}
 	.select {
-		margin: 5px 0;
+		margin: 5px 3em;
 	}
 </style>

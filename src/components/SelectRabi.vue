@@ -20,7 +20,7 @@ export default defineComponent({
 </script>
 
 <template>
-	<div>
+	<span>
 		<label for="ruler-select">שיטת מדידה:</label>
 		<select
 			id="ruler-select"
@@ -35,7 +35,7 @@ export default defineComponent({
 				חזון איש
 			</option>
 		</select>
-	</div>
+	</span>
 </template>
 
 <style lang="scss" scoped>

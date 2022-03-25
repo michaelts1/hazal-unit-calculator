@@ -8,24 +8,24 @@ import TableGeneric from './TableGeneric.vue'
 class UnitValues {
 	// Base unit is liter
 	beitza: .0576 | .09953
-	kortov: number
+	eifa: number
 	grogeret: number
-	zait: number
-	//peras: number
+	kav: number
+	kortov: number
+	kur: number
 	litra: number
 	log: number
-	kav: number
+	peras: number
 	seah: number
-	eifa: number
-	kur: number
+	zait: number
 
 	constructor(ruler: Ruler) {
 		// Base unit is meter
 		this.beitza = ruler === 'חזון_איש' ? .09953 : .0576
 		this.grogeret = 1/3 * this.beitza
 		this.zait = 0.5 * this.beitza
+		this.peras = 3 * this.beitza
 		this.log = 6 * this.beitza
-		//this.peras = number
 		this.kortov = 1/64 * this.log
 		this.litra = 0.5 * this.log
 		this.kav = 24 * this.beitza
@@ -68,7 +68,7 @@ export default defineComponent({
 				{ hidden: false, name: 'גרוגרת', value: unitValues.grogeret },
 				{ hidden: false, name: 'זית', value: unitValues.zait },
 				{ hidden: false, name: 'ביצה', value: unitValues.beitza },
-				//{ hidden: false, name: 'פרס', value: unitValues.peras },
+				{ hidden: false, name: 'פרס', value: unitValues.peras },
 				{ hidden: false, name: 'ליטרא', value: unitValues.litra },
 				{ hidden: false, name: 'לוג', value: unitValues.log },
 				{ hidden: false, name: 'קב', value: unitValues.kav },
@@ -98,7 +98,7 @@ export default defineComponent({
 </script>
 
 <template>
-	<h6>שים לב: הפרס מחושב לפי שיטת רבי שמעון(?) והביצה כחצי זית</h6>
+	<h6>שים לב: הפרס מחושב לפי שיטת הרמב"ם והזית לפי השולחן ערוך</h6>
 	<TableGeneric
 		:units="units.filter(unit => !unit.hidden)"
 		:format-num="formatNum"
