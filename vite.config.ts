@@ -28,6 +28,7 @@ export default defineConfig({
 			enabled: true,
 			clean: false, // VSCode locks files, causing EPERM errors on deletion
 			include: [ 'src/**' ],
+			exclude: [ 'src/index.ts', '**/**.d.ts' ],
 			all: true,
 			100: true,
 		},

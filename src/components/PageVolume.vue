@@ -21,17 +21,17 @@ class UnitValues {
 
 	constructor(ruler: Ruler) {
 		// Base unit is meter
-		this.beitza = ruler === 'חזון_איש' ? .09953 : .0576
-		this.grogeret = 1/3 * this.beitza
-		this.zait = 0.5 * this.beitza
-		this.peras = 3 * this.beitza
-		this.log = 6 * this.beitza
-		this.kortov = 1/64 * this.log
-		this.litra = 0.5 * this.log
-		this.kav = 24 * this.beitza
-		this.seah = 6 * this.kav
-		this.eifa = 3 * this.seah
-		this.kur = 10 * this.eifa
+		this.beitza   = ruler === 'חזון_איש' ? .09953 : .0576
+		this.grogeret = roundNum(1/3 * this.beitza)
+		this.zait     = roundNum(0.5 * this.beitza)
+		this.peras    = roundNum(3 * this.beitza)
+		this.log      = roundNum(6 * this.beitza)
+		this.kortov   = roundNum(1/64 * this.log)
+		this.litra    = roundNum(0.5 * this.log)
+		this.kav      = roundNum(24 * this.beitza)
+		this.seah     = roundNum(6 * this.kav)
+		this.eifa     = roundNum(3 * this.seah)
+		this.kur      = roundNum(10 * this.eifa)
 	}
 }
 

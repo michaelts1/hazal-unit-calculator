@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { Page, Ruler } from './types'
 import { defineComponent } from 'vue'
 import PageLength from './components/PageLength.vue'
 import PageVolume from './components/PageVolume.vue'
@@ -15,8 +16,8 @@ export default defineComponent({
 
 	data() {
 		return {
-			page: 'length',
-			ruler: 'גרח',
+			page: 'length' as Page,
+			ruler: 'גרח' as Ruler,
 		}
 	},
 })

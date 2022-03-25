@@ -5,3 +5,4 @@ export interface Unit extends Object {
 }
 
 export type Ruler = 'גרח' | 'חזון_איש'
+export type Page = 'length' | 'volume'

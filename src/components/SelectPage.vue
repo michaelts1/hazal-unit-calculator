@@ -1,20 +1,19 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
+import type { Page } from '../types'
 
 export default defineComponent({
 	props: {
 		defaultPage: {
-			type: String,
+			type: String as PropType<Page>,
 			default: 'length',
 		},
 	},
 
 	emits: ['page-change'],
 
-	data() {
-		return {
-			value: this.defaultPage,
-		}
+	methods: {
+		onChange({ target }: Event) { this.$emit('page-change', (target as HTMLSelectElement).value) },
 	},
 })
 </script>
@@ -24,9 +23,9 @@ export default defineComponent({
 		<label for="page-select">תחום:</label>
 		<select
 			id="page-select"
-			v-model="value"
+			:value="defaultPage"
 			class="form-select"
-			@change="$emit('page-change', value)"
+			@change="onChange"
 		>
 			<option value="length">
 				מרחק

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
+import type { Ruler } from '../src/types'
 import SelectRabi from '../src/components/SelectRabi.vue'
 
 describe('Component SelectRabi', () => {
@@ -9,7 +10,7 @@ describe('Component SelectRabi', () => {
 
 	const wrapper = mount(SelectRabi, {
 		props: {
-			defaultRuler: 'גר"ח',
+			defaultRuler: 'גר"ח' as Ruler,
 		},
 	})
 
