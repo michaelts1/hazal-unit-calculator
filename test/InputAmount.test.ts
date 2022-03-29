@@ -17,7 +17,7 @@ describe('Component InputAmount, enabled', () => {
 
 	it('has an active input field with correct classes', () => {
 		expect(input.exists()).toBe(true)
-		expect(input.classes()).contain('conversion-input')
+		expect(input.classes()).contain('input-amount')
 		expect(input.classes()).not.contain('invalid')
 	})
 
@@ -61,7 +61,7 @@ describe('Component InputAmount, disabled', () => {
 
 	it('has a disabled input field with correct classes', () => {
 		expect(input.exists()).toBe(true)
-		expect(input.classes()).contain('conversion-input')
+		expect(input.classes()).contain('input-amount')
 		expect(input.classes()).not.contain('invalid')
 		expect(input.attributes()).toHaveProperty('disabled')
 	})

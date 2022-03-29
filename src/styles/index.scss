@@ -16,52 +16,110 @@ body {
 	min-width: 600px;
 }
 
-footer {
-	bottom: 5px;
-	font-size: small;
-	left: 0;
-	position: fixed;
-	right: 0;
-	text-align: center;
-}
-
-header {
-	border-bottom: 2px solid #ddd;
-	margin: 0 0 2em;
-	padding: 0;
-	width: 100%;
-}
-
-h1 {
-	@include title(green);
-}
-
-h6 {
-	@include title(#777);
-	font-size: 8pt;
-	font-weight: bold;
-	margin: 1.5em 0 1em 0;
-}
-
-select {
-	background-color: #f5fbf5 !important;
-}
-
-table {
-	@include table-border;
-}
-
-th, td {
-	@include table-border;
-	padding: .25em .5em;
-	text-align: center;
-	width: 105px;
-
-	@media (max-width: 1150px) {
-		padding: .25em .25em;
-		width: 92px;
+#app { /* Nest all styles inside an id to override boostrap - https://stackoverflow.com/a/13029669 */
+	footer {
+		bottom: 5px;
+		font-size: small;
+		left: 0;
+		position: fixed;
+		right: 0;
+		text-align: center;
 	}
-	@media (max-width: 1015px) {
+
+	header {
+		border-bottom: 2px solid #ddd;
+		margin: 0 0 2em;
+		padding: 0;
+		width: 100%;
+	}
+
+	h1 {
+		@include title(green);
+	}
+
+	h6 {
+		@include title(#777);
+		font-size: 8pt;
+		font-weight: bold;
+		margin: 1.5em 0 1em 0;
+	}
+
+	select {
+		background-color: #f5fbf5;
+		padding-right: 30px;
+	}
+
+	select-page, select-rabi {
+		margin: 5px 3em;
+	}
+
+	table {
+		@include table-border;
+	}
+
+	th, td {
+		@include table-border;
+		padding: .25em .5em;
+		text-align: center;
+		width: 105px;
+
+		@media (max-width: 1150px) {
+			padding: .25em .25em;
+			width: 92px;
+		}
+		@media (max-width: 1015px) {
+			width: fit-content;
+		}
+	}
+
+	.calculator {
+		> .wrapper-column {
+			padding: 0 1em;
+		}
+	}
+
+	.centered {
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.centered-fit {
+		margin: 0 auto;
 		width: fit-content;
+	}
+
+	.input-amount {
+		direction: ltr;
+		margin: 1em 3em;
+
+		&.invalid {
+			box-shadow: #b88 1px 1px 3px 2px;
+			&:focus {
+				box-shadow: #b88 0 -1px 3px 5px;
+			}
+		}
+		&:disabled {
+			background: #f5f5f5;
+			color: black;
+		}
+	}
+
+	.wrapper-row {
+		display: flex;
+		margin: 1em auto;
+		width: fit-content;
+	}
+
+	.wrapper-column {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	#page-select, #ruler-select {
+		display: inline-block;
+		margin: 0 5px;
+		width: unset;
 	}
 }

@@ -36,12 +36,3 @@ export default defineComponent({
 		</select>
 	</span>
 </template>
-
-<style lang="scss" scoped>
-	#page-select {
-		display: inline-block;
-		margin: 0 5px;
-		padding-right: 30px;
-		width: unset;
-	}
-</style>

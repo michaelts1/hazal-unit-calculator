@@ -89,31 +89,13 @@ export default defineComponent({
 	<input
 		v-if="disabled"
 		:value="disabledValue"
-		class="conversion-input"
+		class="input-amount"
 		disabled
 	>
 	<input
 		v-else
 		v-model="domValue"
-		:class="{ 'conversion-input': true, 'invalid': !valid }"
+		:class="{ 'input-amount': true, 'invalid': !valid }"
 		@input="inputValueChanged"
 	>
 </template>
-
-<style scoped lang="scss">
-	.conversion-input {
-		direction: ltr;
-		margin: 1em 3em;
-
-		&.invalid {
-			box-shadow: #b88 1px 1px 3px 2px;
-			&:focus {
-				box-shadow: #b88 0 -1px 3px 5px;
-			}
-		}
-		&:disabled {
-			background: #f5f5f5;
-			color: black;
-		}
-	}
-</style>

@@ -84,7 +84,7 @@ export default defineComponent({
 </script>
 
 <template>
-	<div class="wrapper-row">
+	<div class="wrapper-row calculator">
 		<div class="wrapper-column">
 			<SelectUnit
 				class="form-select"
@@ -118,24 +118,3 @@ export default defineComponent({
 		</div>
 	</div>
 </template>
-
-<style scoped>
-	.form-select {
-		margin: 0 auto;
-		text-align: center;
-	}
-
-	.wrapper-row {
-		display: flex;
-		margin: 1em auto;
-		width: fit-content;
-	}
-
-	.wrapper-column {
-		align-items: center;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		padding: 0 1em;
-	}
-</style>

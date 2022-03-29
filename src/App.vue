@@ -28,20 +28,20 @@ export default defineComponent({
 		<h1>מחשבון יחידות תלמודיות</h1>
 	</header>
 
-	<div class="centered">
+	<div class="centered-fit">
 		<SelectPage
-			class="select"
+			class="select-page"
 			:default-page="page"
 			@page-change="newPage => page = newPage"
 		/>
 		<SelectRabi
-			class="select"
+			class="select-page"
 			:default-ruler="ruler"
 			@ruler-change="newRuler => ruler = newRuler"
 		/>
 	</div>
 
-	<article class="centered">
+	<article class="centered-fit">
 		<PageLength
 			v-if="page === 'length'"
 			:ruler="ruler"
@@ -54,13 +54,3 @@ export default defineComponent({
 
 	<footer>© כל הזכויות שמורות למיכאל צבאן</footer>
 </template>
-
-<style lang="scss" scoped>
-	.centered {
-		margin: 0 auto;
-		width: fit-content;
-	}
-	.select {
-		margin: 5px 3em;
-	}
-</style>

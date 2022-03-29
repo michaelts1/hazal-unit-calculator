@@ -40,23 +40,3 @@ export default defineComponent({
 		</tbody>
 	</table>
 </template>
-
-<style scoped>
-	.centered {
-		margin: 0 auto;
-		text-align: center;
-	}
-
-	.wrapper-row {
-		display: flex;
-		margin: 1em auto;
-		width: fit-content;
-	}
-
-	.wrapper-column {
-		align-items: center;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
-</style>
