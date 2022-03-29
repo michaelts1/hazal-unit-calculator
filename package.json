@@ -7,6 +7,7 @@
 	"scripts": {
 		"lint": "eslint src --ext .js --ext .ts --ext .vue",
 		"test": "rm -fr coverage || (rmdir coverage /s /q | break) && vue-tsc --noEmit && vitest run",
+		"test-watch": "vitest",
 		"compile": "vite build",
 		"build": "npm run lint && npm run test && npm run compile",
 		"serve": "vite serve"
