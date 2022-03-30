@@ -6,6 +6,7 @@ import { roundNum } from '../helpers'
 import TableGeneric from './TableGeneric.vue'
 
 class UnitValues {
+	// Base unit is meter
 	etzba: .024 | .02
 	tefach: number
 	sit: number

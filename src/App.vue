@@ -30,12 +30,10 @@ export default defineComponent({
 
 	<div class="centered-fit">
 		<SelectPage
-			class="select-page"
 			:default-page="page"
 			@page-change="newPage => page = newPage"
 		/>
 		<SelectRabi
-			class="select-page"
 			:default-ruler="ruler"
 			@ruler-change="newRuler => ruler = newRuler"
 		/>
