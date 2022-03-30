@@ -1,9 +1,8 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 import type { Ruler, Unit } from '../types'
-import CalculatorComponent from './CalculatorComponent.vue'
+import PageGeneric from './PageGeneric.vue'
 import { roundNum } from '../helpers'
-import TableGeneric from './TableGeneric.vue'
 
 class UnitValues {
 	// Base unit is liter
@@ -37,8 +36,7 @@ class UnitValues {
 
 export default defineComponent({
 	components: {
-		CalculatorComponent,
-		TableGeneric,
+		PageGeneric,
 	},
 
 	props: {
@@ -98,14 +96,10 @@ export default defineComponent({
 </script>
 
 <template>
-	<h6>שים לב: הפרס מחושב לפי שיטת הרמב"ם והזית לפי השולחן ערוך</h6>
-	<TableGeneric
-		:units="units.filter(unit => !unit.hidden)"
-		:format-num="formatNum"
-	/>
-
-	<CalculatorComponent
-		:units="units"
+	<PageGeneric
 		:default-units="defaultUnits"
+		:format-num="formatNum"
+		:units="units"
+		message="שים לב: הפרס מחושב לפי שיטת הרמב&quot;ם והזית לפי השולחן ערוך"
 	/>
 </template>

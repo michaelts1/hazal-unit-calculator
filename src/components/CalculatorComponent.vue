@@ -1,9 +1,9 @@
 <script lang="ts">
+import type { DefaultUnits, Unit } from '../types'
 import { defineComponent, PropType } from 'vue'
 import InputAmount from './InputAmount.vue'
 import { roundNum } from '../helpers'
 import SelectUnit from './SelectUnit.vue'
-import type { Unit } from '../types'
 
 export default defineComponent({
 	components: {
@@ -17,7 +17,7 @@ export default defineComponent({
 			required: true,
 		},
 		defaultUnits: {
-			type: Object as PropType<{input: string, output: string }>,
+			type: Object as PropType<DefaultUnits>,
 			required: true,
 		},
 	},
