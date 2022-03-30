@@ -34,6 +34,10 @@ export default defineComponent({
 
 			return this.value.toLocaleString(undefined, { maximumFractionDigits: digits })
 		},
+
+		usedValue() {
+			return this.disabled ? this.disabledValue : this.domValue
+		},
 	},
 
 	/*
@@ -70,6 +74,7 @@ export default defineComponent({
 		/** Checks the validity of the input field and emits the new value to the parent component */
 		inputValueChanged(event: Event) {
 			const target = event.target as HTMLInputElement
+			this.domValue = target.value
 
 			const value = +target.value.replace(/,/g, '')
 			if (!Number.isFinite(value)) {
@@ -87,15 +92,9 @@ export default defineComponent({
 
 <template>
 	<input
-		v-if="disabled"
-		:value="disabledValue"
-		class="input-amount"
-		disabled
-	>
-	<input
-		v-else
-		v-model="domValue"
 		:class="{ 'input-amount': true, 'invalid': !valid }"
+		:disabled="disabled"
+		:value="usedValue"
 		@input="inputValueChanged"
 	>
 </template>
