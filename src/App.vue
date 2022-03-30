@@ -28,18 +28,20 @@ export default defineComponent({
 		<h1>מחשבון יחידות תלמודיות</h1>
 	</header>
 
-	<div class="centered-fit">
+	<div class="mx-auto">
 		<SelectPage
+			class="select"
 			:default-page="page"
 			@page-change="newPage => page = newPage"
 		/>
 		<SelectRabi
+			class="select"
 			:default-ruler="ruler"
 			@ruler-change="newRuler => ruler = newRuler"
 		/>
 	</div>
 
-	<article class="centered-fit">
+	<article class="mx-auto">
 		<PageLength
 			v-if="page === 'length'"
 			:ruler="ruler"
@@ -49,6 +51,4 @@ export default defineComponent({
 			:ruler="ruler"
 		/>
 	</article>
-
-	<footer>© כל הזכויות שמורות למיכאל צבאן</footer>
 </template>

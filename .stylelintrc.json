@@ -4,7 +4,8 @@
 	"rules": {
 		"alpha-value-notation": "number",
 		"comment-empty-line-before": "never",
-		"declaration-empty-line-before": "never",
+		"declaration-empty-line-before": null,
+		"scss/double-slash-comment-empty-line-before": null,
 		"indentation": "tab",
 		"number-leading-zero": "never",
 		"selector-list-comma-newline-after": "always-multi-line"
