@@ -27,7 +27,7 @@ jobs:
         run: |
           mkdir ../tmpDist
           mv dist/* ../tmpDist
-          rm -fr * .github .eslintrc.json .gitignore
+          rm -fr * .github .eslintrc.json .gitignore .stylelintrc.json
           mv ../tmpDist/* .
 
       - name: Publish to Pages
