@@ -115,7 +115,7 @@ export default defineComponent({
 				aria-label="החלף בין הקלט לתוצאה"
 				@click="swapInputOutput"
 			>
-				<img src="swap.svg">
+				<img src="/swap.svg">
 			</button>
 		</div>
 
