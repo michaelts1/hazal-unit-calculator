@@ -60,6 +60,11 @@ export default defineComponent({
 </script>
 
 <template>
+	<CalculatorComponent
+		:units="units"
+		:default-units="defaultUnits"
+	/>
+
 	<h6> {{ message }} </h6>
 
 	<TableGenericLowWidth
@@ -71,10 +76,5 @@ export default defineComponent({
 		v-else
 		:units="units.filter(unit => !unit.hidden)"
 		:format-num="formatNum"
-	/>
-
-	<CalculatorComponent
-		:units="units"
-		:default-units="defaultUnits"
 	/>
 </template>
