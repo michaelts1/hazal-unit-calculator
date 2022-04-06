@@ -59,4 +59,14 @@ describe('Component CalculatorComponent', () => {
 
 		expect((wrapper.vm.output as Field).value).toBe(oldValue * 2)
 	})
+
+	it('swaps input and output correctly', async () => {
+		const input = wrapper.vm.input as Field
+		const output = wrapper.vm.output as Field
+
+		wrapper.find('button.btn-light').trigger('click')
+
+		expect(output).toBe(wrapper.vm.input)
+		expect(input).toBe(wrapper.vm.output)
+	})
 })

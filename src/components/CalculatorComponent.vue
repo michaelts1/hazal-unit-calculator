@@ -58,14 +58,12 @@ export default defineComponent({
 			this.output.value = roundNum(outputValue)
 		},
 
-		/** Called after the input value has changed */
 		inputValueChanged(newValue: number) {
 			this.input.value = newValue
 			const meters = this.convertToMeters(newValue, this.input.unit)
 			this.updateOutputValue(meters)
 		},
 
-		/** Called after the input unit of measurement has changed */
 		InputUnitChanged(newUnit: string) {
 			this.input.unit = newUnit
 
@@ -73,11 +71,16 @@ export default defineComponent({
 			this.updateOutputValue(meters)
 		},
 
-		/** Called after the output unit of measurement has changed */
 		OutputUnitChanged(newUnit: string) {
 			const meters = this.convertToMeters(this.output.value, this.output.unit)
 			this.output.unit = newUnit
 			this.updateOutputValue(meters)
+		},
+
+		swapInputOutput() {
+			const { input, output } = this
+			this.input = output
+			this.output = input
 		},
 	},
 })
@@ -86,35 +89,52 @@ export default defineComponent({
 <template>
 	<div class="wrapper-row calculator">
 		<div class="wrapper-column">
-			<InputAmount
-				class="form-control form-control-sm"
-				size="1"
-				:value="input.value"
-				@value-change="inputValueChanged"
-			/>
-			<SelectUnit
-				class="form-select"
-				:unit-names="unitNames"
-				:selected-unit="input.unit"
-				@value-change="newUnit => InputUnitChanged(newUnit)"
-			/>
+			<h5>קלט</h5>
+			<div>
+				<InputAmount
+					class="form-control form-control-sm"
+					size="1"
+					:value="input.value"
+					@value-change="inputValueChanged"
+				/>
+				<SelectUnit
+					class="form-select"
+					:unit-names="unitNames"
+					:selected-unit="input.unit"
+					@value-change="newUnit => InputUnitChanged(newUnit)"
+				/>
+			</div>
 		</div>
+
 		<div class="wrapper-column">
-			=
+			&nbsp;
+			<button
+				class="btn btn-light"
+				type="button"
+				title="החלף בין הקלט לתוצאה"
+				aria-label="החלף בין הקלט לתוצאה"
+				@click="swapInputOutput"
+			>
+				<img src="swap.svg">
+			</button>
 		</div>
+
 		<div class="wrapper-column">
-			<InputAmount
-				class="form-control form-control-sm"
-				size="1"
-				:disabled="true"
-				:value="output.value"
-			/>
-			<SelectUnit
-				class="form-select"
-				:unit-names="unitNames"
-				:selected-unit="output.unit"
-				@value-change="newUnit => OutputUnitChanged(newUnit)"
-			/>
+			<h5>תוצאה</h5>
+			<div>
+				<InputAmount
+					class="form-control form-control-sm"
+					size="1"
+					:disabled="true"
+					:value="output.value"
+				/>
+				<SelectUnit
+					class="form-select"
+					:unit-names="unitNames"
+					:selected-unit="output.unit"
+					@value-change="newUnit => OutputUnitChanged(newUnit)"
+				/>
+			</div>
 		</div>
 	</div>
 </template>

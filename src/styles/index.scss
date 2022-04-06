@@ -1,3 +1,5 @@
+$min-table-length: 1085px;
+
 @mixin title($color) {
 	text-align: center;
 	color: $color;
@@ -56,6 +58,11 @@ body {
 		@include title(green);
 	}
 
+	h5 {
+		@include title(darkgreen);
+		margin: 0;
+	}
+
 	h6 {
 		@include title(#666);
 		font-size: 8pt;
@@ -65,7 +72,7 @@ body {
 
 	select {
 		background-color: #f5fbf5;
-		padding-right: 30px;
+		padding: 4px 30px 4px 0;
 	}
 
 	th, td {
@@ -86,6 +93,35 @@ body {
 
 		&:nth-of-type(even) {
 			@include cell-background(even);
+		}
+	}
+
+	.btn-light {
+		border-color: #c8c8c8;
+		padding: 0;
+
+		img {
+			margin: 6px;
+			width: 15px;
+		}
+	}
+
+	.input-amount {
+		direction: ltr;
+		margin: .5em 0 1em;
+		width: 130px;
+
+		&.invalid {
+			box-shadow: #b88 1px 1px 3px 2px;
+
+			&:focus {
+				box-shadow: #b88 0 -1px 3px 5px;
+			}
+		}
+
+		&:disabled {
+			background: #f5f5f5;
+			color: black;
 		}
 	}
 
@@ -110,24 +146,6 @@ body {
 		}
 	}
 
-	.input-amount {
-		direction: ltr;
-		margin: 1em 3em;
-
-		&.invalid {
-			box-shadow: #b88 1px 1px 3px 2px;
-
-			&:focus {
-				box-shadow: #b88 0 -1px 3px 5px;
-			}
-		}
-
-		&:disabled {
-			background: #f5f5f5;
-			color: black;
-		}
-	}
-
 	.wrapper-row {
 		display: flex;
 		margin: 1em auto;
@@ -140,6 +158,14 @@ body {
 		flex-direction: column;
 		justify-content: center;
 		padding: 0 1em;
+
+		@media (min-width: $min-table-length) {
+			.input-amount, .form-select {
+				display: inline-block;
+				width: 130px;
+				margin: 10px;
+			}
+		}
 	}
 
 	#page-select, #ruler-select {
