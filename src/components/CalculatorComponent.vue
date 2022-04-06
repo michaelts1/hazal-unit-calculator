@@ -86,34 +86,34 @@ export default defineComponent({
 <template>
 	<div class="wrapper-row calculator">
 		<div class="wrapper-column">
-			<SelectUnit
-				class="form-select"
-				:unit-names="unitNames"
-				:selected-unit="input.unit"
-				@value-change="newUnit => InputUnitChanged(newUnit)"
-			/>
 			<InputAmount
 				class="form-control form-control-sm"
 				size="1"
 				:value="input.value"
 				@value-change="inputValueChanged"
 			/>
+			<SelectUnit
+				class="form-select"
+				:unit-names="unitNames"
+				:selected-unit="input.unit"
+				@value-change="newUnit => InputUnitChanged(newUnit)"
+			/>
 		</div>
 		<div class="wrapper-column">
 			=
 		</div>
 		<div class="wrapper-column">
-			<SelectUnit
-				class="form-select"
-				:unit-names="unitNames"
-				:selected-unit="output.unit"
-				@value-change="newUnit => OutputUnitChanged(newUnit)"
-			/>
 			<InputAmount
 				class="form-control form-control-sm"
 				size="1"
 				:disabled="true"
 				:value="output.value"
+			/>
+			<SelectUnit
+				class="form-select"
+				:unit-names="unitNames"
+				:selected-unit="output.unit"
+				@value-change="newUnit => OutputUnitChanged(newUnit)"
 			/>
 		</div>
 	</div>
