@@ -22,7 +22,7 @@ export default defineComponent({
 
 <template>
 	<span>
-		<label for="ruler-select">שיטת מדידה:</label>
+		<label for="ruler-select">שיטת פסיקה:</label>
 		<select
 			id="ruler-select"
 			v-model="value"
@@ -30,7 +30,7 @@ export default defineComponent({
 			@change="$emit('ruler-change', value)"
 		>
 			<option value="גרח">
-				גר"ח (רב חיים נאה)
+				רב חיים נאה
 			</option>
 			<option value="חזון_איש">
 				חזון איש
