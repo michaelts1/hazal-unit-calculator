@@ -10,6 +10,7 @@
 		"scss/double-slash-comment-empty-line-before": null,
 		"indentation": "tab",
 		"number-leading-zero": "never",
-		"selector-list-comma-newline-after": "always-multi-line"
+		"selector-list-comma-newline-after": "always-multi-line",
+		"string-quotes": "single"
 	}
 }
