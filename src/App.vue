@@ -39,14 +39,17 @@ export default defineComponent({
 	<div class="container">
 		<header>
 			<h1> {{ i18n.t('title') }} </h1>
-			<button
-				id="switch-lang"
-				class="btn"
-				type="button"
-				@click="changeLang"
-			>
-				{{ i18n.t('_name', otherLang) }}
-			</button>
+
+			<div id="switch-lang-container">
+				<button
+					id="switch-lang"
+					class="btn"
+					type="button"
+					@click="changeLang"
+				>
+					{{ i18n.t('_name', otherLang) }}
+				</button>
+			</div>
 		</header>
 
 		<div class="mx-auto">

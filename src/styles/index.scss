@@ -27,6 +27,12 @@ html[dir='ltr'] {
 	select {
 		padding-left: 8px !important;
 	}
+
+	#switch-lang-container {
+		@media (max-width: 380px) {
+			direction: rtl !important;
+		}
+	}
 }
 
 body {
@@ -68,6 +74,8 @@ body {
 
 	h1 {
 		@include title(green);
+		margin: 0;
+		padding: .25rem 0;
 	}
 
 	h5 {
@@ -199,14 +207,43 @@ body {
 		width: unset;
 	}
 
-	#switch-lang {
+	#switch-lang-container {
 		bottom: 0;
-		font-size: 11pt;
 		left: 10px;
 		padding: 5px 10px;
 		position: absolute;
-		text-transform: capitalize;
 		top: 0;
+
+		@media (max-width: 440px) {
+			padding: 5px;
+		}
+
+		@media (max-width: 415px) {
+			padding: 5px 0;
+		}
+
+		@media (max-width: 400px) {
+			left: 5px;
+		}
+
+		@media (max-width: 380px) {
+			direction: ltr;
+		}
+	}
+
+	#switch-lang {
+		font-size: 11pt;
+		padding: 0;
+		position: relative;
+		text-transform: capitalize;
+		top: 50%;
+		transform: translateY(-50%);
+
+		@media (max-width: 380px) {
+			width: 3ch;
+			overflow: hidden;
+			text-overflow: '';
+		}
 	}
 
 	#table-low-width {
