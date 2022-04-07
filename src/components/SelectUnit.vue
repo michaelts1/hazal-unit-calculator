@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
+import type { Unit } from '../types'
 
 export default defineComponent({
 	props: {
@@ -7,8 +8,8 @@ export default defineComponent({
 			type: String,
 			required: true,
 		},
-		unitNames: {
-			type: Array as PropType<string[]>,
+		units: {
+			type: Array as PropType<Unit[]>,
 			required: true,
 		},
 	},
@@ -27,11 +28,11 @@ export default defineComponent({
 		@change="onChange"
 	>
 		<option
-			v-for="name in unitNames"
-			:key="name"
-			:value="name"
+			v-for="unit in units"
+			:key="unit.id"
+			:value="unit.id"
 		>
-			{{ name }}
+			{{ unit.name }}
 		</option>
 	</select>
 </template>

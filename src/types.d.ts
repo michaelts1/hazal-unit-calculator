@@ -1,10 +1,11 @@
 export interface Unit {
+	id: string
 	hidden: boolean
 	name: string
 	value: number
 }
 
-export type Ruler = 'גרח' | 'חזון_איש'
+export type Ruler = 'grach' | 'chazonIsh'
 
 export type Page = 'length' | 'volume'
 

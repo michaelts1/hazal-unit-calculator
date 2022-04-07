@@ -15,8 +15,8 @@ describe('Component PageGeneric', () => {
 		formatNum: (n: number) => ''+n,
 		message: 'הודעה',
 		units: [
-			{ hidden: false, name: 'א', value: .005 },
-			{ hidden: false, name: 'ב', value: .1 },
+			{ id: 'a', hidden: false, name: 'א', value: .005 },
+			{ id: 'b', hidden: false, name: 'ב', value: .1 },
 		],
 	}
 

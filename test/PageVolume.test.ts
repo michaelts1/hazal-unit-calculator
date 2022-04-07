@@ -10,7 +10,7 @@ describe('Component PageVolume', () => {
 
 	const wrapper = mount(PageVolume, {
 		props: {
-			ruler: 'גרח',
+			ruler: 'grach',
 		},
 	})
 
@@ -32,7 +32,7 @@ describe('Component PageVolume', () => {
 
 	it('updates values when changing ruler', async () => {
 		await wrapper.setProps({
-			ruler: 'חזון_איש',
+			ruler: 'chazonIsh',
 		})
 
 		const current = (wrapper.vm.units as Unit[]).slice(3)

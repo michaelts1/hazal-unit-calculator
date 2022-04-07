@@ -6,6 +6,7 @@
 
 .github-ribbon {
 	bottom: 0;
+	direction: rtl;
 	font-size: 13px;
 	height: 10em;
 	left: 0;

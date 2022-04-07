@@ -22,7 +22,7 @@ export default defineComponent({
 			<tr>
 				<th
 					v-for="unit in units"
-					:key="unit.name"
+					:key="unit.id"
 				>
 					{{ unit.name }}
 				</th>
@@ -32,7 +32,7 @@ export default defineComponent({
 			<tr>
 				<td
 					v-for="unit in units"
-					:key="unit.name"
+					:key="unit.id"
 				>
 					{{ formatNum(unit.value) }}
 				</td>

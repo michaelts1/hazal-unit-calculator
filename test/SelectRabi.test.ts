@@ -10,7 +10,7 @@ describe('Component SelectRabi', () => {
 
 	const wrapper = mount(SelectRabi, {
 		props: {
-			defaultRuler: 'גר"ח' as Ruler,
+			defaultRuler: 'grach' as Ruler,
 		},
 	})
 
@@ -23,15 +23,15 @@ describe('Component SelectRabi', () => {
 	it('reacts to value changes', async () => {
 		const select = wrapper.find('select')
 
-		await select.setValue('חזון_איש')
-		expect(wrapper.vm.value).toBe('חזון_איש')
+		await select.setValue('chazonIsh')
+		expect(wrapper.vm.value).toBe('chazonIsh')
 
-		await select.setValue('גרח')
-		expect(wrapper.vm.value).toBe('גרח')
+		await select.setValue('grach')
+		expect(wrapper.vm.value).toBe('grach')
 
 		const rulerChangeEvents = wrapper.emitted('ruler-change') as unknown[]
-		expect(rulerChangeEvents[0]).toEqual([ 'חזון_איש' ])
-		expect(rulerChangeEvents[1]).toEqual([ 'גרח' ])
+		expect(rulerChangeEvents[0]).toEqual([ 'chazonIsh' ])
+		expect(rulerChangeEvents[1]).toEqual([ 'grach' ])
 
 		const changeEvents = wrapper.emitted('change') as unknown[]
 		expect(changeEvents).toHaveLength(2)

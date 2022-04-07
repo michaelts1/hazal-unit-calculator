@@ -35,17 +35,24 @@ describe('App', () => {
 
 	it('responds to ruler change', async () => {
 		const SelectRabi = wrapper.getComponent({ name: 'SelectRabi' })
-		SelectRabi.vm.$emit('ruler-change', 'חזון_איש')
-		expect(wrapper.vm.ruler).toBe('חזון_איש')
+		SelectRabi.vm.$emit('ruler-change', 'chazonIsh')
+		expect(wrapper.vm.ruler).toBe('chazonIsh')
 	})
 
 	it("doesn't show any page if page name is invalid", async () => {
-		await wrapper.setData({ page: 'gra' })
+		await wrapper.setData({ page: 'nonsense' })
 
 		const PageLength = wrapper.findComponent({ name: 'PageLength' })
 		const PageVolume = wrapper.findComponent({ name: 'PageVolume' })
 
 		expect(PageLength.exists()).toBe(false)
 		expect(PageVolume.exists()).toBe(false)
+	})
+
+	it('can change locale', async () => {
+		expect(wrapper.vm.otherLang).toBe('en')
+
+		await wrapper.find('#switch-lang').trigger('click')
+		expect(wrapper.vm.otherLang).toBe('he')
 	})
 })

@@ -1,32 +1,9 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 import type { Ruler, Unit } from '../types'
+import { i18n } from '../i18n'
 import PageGeneric from './PageGeneric.vue'
 import { roundNum } from '../helpers'
-
-class UnitValues {
-	// Base unit is meter
-	etzba: .024 | .02
-	tefach: number
-	sit: number
-	zeret: number
-	amah: number
-	ris: number
-	mil: number
-	parsa: number
-
-	constructor(ruler: Ruler) {
-		// Base unit is meter
-		this.etzba  = ruler === 'חזון_איש' ? .024 : .02
-		this.tefach = roundNum(4 * this.etzba)
-		this.sit    = roundNum(2 * this.tefach)
-		this.amah   = roundNum(6 * this.tefach)
-		this.zeret  = roundNum(.5 * this.amah)
-		this.mil    = roundNum(2000 * this.amah)
-		this.parsa  = roundNum(4 * this.mil)
-		this.ris    = roundNum(2/15 * this.mil)
-	}
-}
 
 export default defineComponent({
 	components: {
@@ -42,48 +19,58 @@ export default defineComponent({
 
 	data() {
 		return {
+			i18n,
 			defaultUnits: {
-				input: 'טפח',
-				output: 'סנטימטר',
+				input: 'tefach',
+				output: 'cm',
 			},
 		}
 	},
 
 	computed: {
 		units(): Unit[] {
-			const unitValues = new UnitValues(this.ruler)
+			// Base unit is meter
+			const etzba  = this.ruler === 'chazonIsh' ? .024 : .02
+			const tefach = roundNum(4 * etzba)
+			const sit    = roundNum(2 * tefach)
+			const amah   = roundNum(6 * tefach)
+			const zeret  = roundNum(.5 * amah)
+			const mil    = roundNum(2000 * amah)
+			const parsa  = roundNum(4 * mil)
+			const ris    = roundNum(2/15 * mil)
+
 			return [
-				{ hidden: true, name: 'סנטימטר', value: .01 },
-				{ hidden: true, name: 'מטר', value: 1 },
-				{ hidden: true, name: 'קילומטר', value: 1000 },
-				{ hidden: false, name: 'אצבע', value: unitValues.etzba },
-				{ hidden: false, name: 'טפח', value: unitValues.tefach },
-				{ hidden: false, name: 'סיט', value: unitValues.sit },
-				{ hidden: false, name: 'זרת', value: unitValues.zeret },
-				{ hidden: false, name: 'אמה', value: unitValues.amah },
-				{ hidden: false, name: 'ריס', value: unitValues.ris },
-				{ hidden: false, name: 'מיל', value: unitValues.mil },
-				{ hidden: false, name: 'פרסה', value: unitValues.parsa },
+				{ hidden: true, id: 'cm', name: i18n.t('centimeterLong'), value: .01 },
+				{ hidden: true, id: 'm', name: i18n.t('meterLong'), value: 1 },
+				{ hidden: true, id: 'km', name: i18n.t('kilometerLong'), value: 1000 },
+				{ hidden: false, id: 'etzba', name: i18n.t('etzba'), value: etzba },
+				{ hidden: false, id: 'tefach', name: i18n.t('tefach'), value: tefach },
+				{ hidden: false, id: 'sit', name: i18n.t('sit'), value: sit },
+				{ hidden: false, id: 'zeret', name: i18n.t('zeret'), value: zeret },
+				{ hidden: false, id: 'amah', name: i18n.t('amah'), value: amah },
+				{ hidden: false, id: 'ris', name: i18n.t('ris'), value: ris },
+				{ hidden: false, id: 'mil', name: i18n.t('mil'), value: mil },
+				{ hidden: false, id: 'parsa', name: i18n.t('parsa'), value: parsa },
 			]
 		},
 	},
 
 	methods: {
 		formatNum(num: number) {
-			let unit = ' מטר'
+			let unit = i18n.t('meterLong')
 
 			if (num < .01) {
 				num *= 1000
-				unit = ' מ"מ'
+				unit = i18n.t('millimeterShort')
 			} else if (num < 1) {
 				num *= 100
-				unit = ' ס"מ'
+				unit = i18n.t('centimeterShort')
 			} else if (num > 1000) {
 				num /= 1000
-				unit = ' ק"מ'
+				unit = i18n.t('kilometerShort')
 			}
 
-			return roundNum(num) + unit
+			return roundNum(num) + ' ' + unit
 		},
 	},
 })
@@ -94,6 +81,6 @@ export default defineComponent({
 		:default-units="defaultUnits"
 		:format-num="formatNum"
 		:units="units"
-		message="שים לב: הסיט מחושב לפי שיטת הרמב&quot;ם"
+		:message="i18n.t('messageLength')"
 	/>
 </template>

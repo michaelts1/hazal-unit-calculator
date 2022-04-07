@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
+import { i18n } from '../i18n'
 import type { Page } from '../types'
 
 export default defineComponent({
@@ -12,6 +13,12 @@ export default defineComponent({
 
 	emits: ['page-change'],
 
+	data() {
+		return {
+			i18n,
+		}
+	},
+
 	methods: {
 		onChange({ target }: Event) { this.$emit('page-change', (target as HTMLSelectElement).value) },
 	},
@@ -20,7 +27,7 @@ export default defineComponent({
 
 <template>
 	<span>
-		<label for="page-select">תחום:</label>
+		<label for="page-select">{{ i18n.t('type') }}:</label>
 		<select
 			id="page-select"
 			:value="defaultPage"
@@ -28,10 +35,10 @@ export default defineComponent({
 			@change="onChange"
 		>
 			<option value="length">
-				מרחק
+				{{ i18n.t('length') }}
 			</option>
 			<option value="volume">
-				נפח
+				{{ i18n.t('volume') }}
 			</option>
 		</select>
 	</span>

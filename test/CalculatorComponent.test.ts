@@ -14,18 +14,18 @@ describe('Component CalculatorComponent', () => {
 	})
 
 	const units: Unit[] = [
-		{ hidden: false, name: 'אצבע', value: .005 },
-		{ hidden: false, name: 'סנטימטר', value: .1 },
-		{ hidden: true, name: 'אמה', value: 2 },
-		{ hidden: false, name: 'טפח', value: 4 },
-		{ hidden: false, name: 'זרת', value: 4000 },
+		{ id: 'etzba', hidden: false, name: 'אצבע', value: .005 },
+		{ id: 'cm', hidden: false, name: 'סנטימטר', value: .1 },
+		{ id: 'amah', hidden: true, name: 'אמה', value: 2 },
+		{ id: 'tefach', hidden: false, name: 'טפח', value: 4 },
+		{ id: 'zeret', hidden: false, name: 'זרת', value: 4000 },
 	]
 	const wrapper = mount(CalculatorComponent, {
 		props: {
 			units,
 			defaultUnits: {
-				input: 'טפח',
-				output: 'סנטימטר',
+				input: 'tefach',
+				output: 'cm',
 			},
 		},
 	})
@@ -33,13 +33,13 @@ describe('Component CalculatorComponent', () => {
 	it('responds to events emitted by SelectUnit', () => {
 		const [ input, output ] = wrapper.findAllComponents({ name: 'SelectUnit' })
 
-		expect((wrapper.vm.input as Field).unit).toBe('טפח') // Default
-		input.vm.$emit('value-change', 'אצבע')
-		expect((wrapper.vm.input as Field).unit).toBe('אצבע') // New value
+		expect((wrapper.vm.input as Field).unit).toBe('tefach') // Default
+		input.vm.$emit('value-change', 'etzba')
+		expect((wrapper.vm.input as Field).unit).toBe('etzba') // New value
 
-		expect((wrapper.vm.output as Field).unit).toBe('סנטימטר') // Default
-		output.vm.$emit('value-change', 'אמה')
-		expect((wrapper.vm.output as Field).unit).toBe('אמה') // New value
+		expect((wrapper.vm.output as Field).unit).toBe('cm') // Default
+		output.vm.$emit('value-change', 'amah')
+		expect((wrapper.vm.output as Field).unit).toBe('amah') // New value
 	})
 
 	it('responds to events emitted by InputAmount', () => {

@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { DefaultUnits, Unit } from '../types'
 import { defineComponent, PropType } from 'vue'
+import { i18n } from '../i18n'
 import InputAmount from './InputAmount.vue'
 import { roundNum } from '../helpers'
 import SelectUnit from './SelectUnit.vue'
@@ -24,13 +25,10 @@ export default defineComponent({
 
 	data() {
 		return {
+			i18n,
 			input: { unit: this.defaultUnits.input, value: 0 },
 			output: { unit: this.defaultUnits.output, value: 0 },
 		}
-	},
-
-	computed: {
-		unitNames() { return this.units.map(unit => unit.name) },
 	},
 
 	watch: {
@@ -42,13 +40,13 @@ export default defineComponent({
 	methods: {
 		/** Converts measurements done using other units to metric */
 		convertToMeters(amount: number, sourceUnit: string) {
-			const unit = this.units.filter(({ name }) => name === sourceUnit)[0]
+			const unit = this.units.filter(({ id }) => id === sourceUnit)[0]
 			return unit.value * amount
 		},
 
 		/** Converts metric measurements to other units */
 		convertFromMeters(meters: number, targetUnit: string) {
-			const unit = this.units.filter(({ name }) => name === targetUnit)[0]
+			const unit = this.units.filter(({ id }) => id === targetUnit)[0]
 			return meters / unit.value
 		},
 
@@ -89,7 +87,7 @@ export default defineComponent({
 <template>
 	<div class="wrapper-row calculator">
 		<div class="wrapper-column">
-			<h5>קלט</h5>
+			<h5> {{ i18n.t('input') }} </h5>
 			<div>
 				<InputAmount
 					class="form-control form-control-sm"
@@ -99,7 +97,7 @@ export default defineComponent({
 				/>
 				<SelectUnit
 					class="form-select"
-					:unit-names="unitNames"
+					:units="units"
 					:selected-unit="input.unit"
 					@value-change="newUnit => InputUnitChanged(newUnit)"
 				/>
@@ -111,8 +109,8 @@ export default defineComponent({
 			<button
 				class="btn btn-light"
 				type="button"
-				title="החלף בין הקלט לתוצאה"
-				aria-label="החלף בין הקלט לתוצאה"
+				:title="i18n.t('switchInputOutput')"
+				:aria-label="i18n.t('switchInputOutput')"
 				@click="swapInputOutput"
 			>
 				<img src="/swap.svg">
@@ -120,7 +118,7 @@ export default defineComponent({
 		</div>
 
 		<div class="wrapper-column">
-			<h5>תוצאה</h5>
+			<h5> {{ i18n.t('output') }} </h5>
 			<div>
 				<InputAmount
 					class="form-control form-control-sm"
@@ -130,7 +128,7 @@ export default defineComponent({
 				/>
 				<SelectUnit
 					class="form-select"
-					:unit-names="unitNames"
+					:units="units"
 					:selected-unit="output.unit"
 					@value-change="newUnit => OutputUnitChanged(newUnit)"
 				/>

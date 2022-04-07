@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { i18n } from '../i18n'
 
 export default defineComponent({
 	props: {
@@ -78,7 +79,7 @@ export default defineComponent({
 
 			const value = +target.value.replace(/,/g, '')
 			if (!Number.isFinite(value)) {
-				this.changeValidity(target, 'נא הכנס מספר')
+				this.changeValidity(target, i18n.t('invalidNumber'))
 				console.log('Ignoring invalid number input')
 				return
 			}

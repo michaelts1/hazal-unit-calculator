@@ -10,10 +10,10 @@ describe('Component TableGenericLowWidth', () => {
 	})
 
 	const units: Unit[] = [
-		{ hidden: false, name: 'אצבע', value: .005 },
-		{ hidden: false, name: 'סנטימטר', value: .1 },
-		{ hidden: false, name: 'טפח', value: 4 },
-		{ hidden: false, name: 'זרת', value: 4000 },
+		{ id: 'etzba', hidden: false, name: 'אצבע', value: .005 },
+		{ id: 'centimeter', hidden: false, name: 'סנטימטר', value: .1 },
+		{ id: 'tefach', hidden: false, name: 'טפח', value: 4 },
+		{ id: 'zeret', hidden: false, name: 'זרת', value: 4000 },
 	]
 	const wrapper = mount(TableGenericLowWidth, {
 		props: {
