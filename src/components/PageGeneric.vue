@@ -3,13 +3,11 @@ import type { DefaultUnits, Unit } from '../types'
 import { defineComponent, PropType } from 'vue'
 import CalculatorComponent from './CalculatorComponent.vue'
 import TableGeneric from './TableGeneric.vue'
-import TableGenericLowWidth from './TableGenericLowWidth.vue'
 
 export default defineComponent({
 	components: {
 		CalculatorComponent,
 		TableGeneric,
-		TableGenericLowWidth,
 	},
 
 	props: {
@@ -30,32 +28,6 @@ export default defineComponent({
 			required: true,
 		},
 	},
-
-	data() {
-		return {
-			width: window.innerWidth,
-		}
-	},
-
-	computed: {
-		lowWidth() {
-			return this.width < 1085
-		},
-	},
-
-	mounted() {
-		window.addEventListener('resize', this.updateWidth)
-	},
-
-	unmounted() {
-		window.removeEventListener('resize', this.updateWidth)
-	},
-
-	methods: {
-		updateWidth() {
-			this.width = window.innerWidth
-		},
-	},
 })
 </script>
 
@@ -67,13 +39,7 @@ export default defineComponent({
 
 	<h6> {{ message }} </h6>
 
-	<TableGenericLowWidth
-		v-if="lowWidth"
-		:units="units.filter(unit => !unit.hidden)"
-		:format-num="formatNum"
-	/>
 	<TableGeneric
-		v-else
 		:units="units.filter(unit => !unit.hidden)"
 		:format-num="formatNum"
 	/>

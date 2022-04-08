@@ -13,11 +13,49 @@ export default defineComponent({
 			required: true,
 		},
 	},
+
+	data() {
+		return {
+			width: window.innerWidth,
+		}
+	},
+
+	computed: {
+		lowWidth() { return this.width < 1085 },
+	},
+
+	mounted() { window.addEventListener('resize', this.updateWidth) },
+	unmounted() { window.removeEventListener('resize', this.updateWidth) },
+
+	methods: {
+		updateWidth() {
+			this.width = window.innerWidth
+		},
+	},
 })
 </script>
 
 <template>
-	<table>
+	<div
+		v-if="lowWidth"
+		id="table-low-width"
+		class="container"
+	>
+		<div
+			v-for="unit in units"
+			:key="unit.name"
+			class="row"
+		>
+			<div class="col">
+				{{ unit.name }}
+			</div>
+			<div class="col">
+				{{ formatNum(unit.value) }}
+			</div>
+		</div>
+	</div>
+
+	<table v-else>
 		<thead>
 			<tr>
 				<th

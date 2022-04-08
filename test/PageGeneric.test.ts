@@ -24,26 +24,13 @@ describe('Component PageGeneric', () => {
 		props,
 	})
 
-	it('has the correct children: innerWidth = 1024', () => {
+	it('has the correct children', () => {
 		const h6 = wrapper.find('h6')
 		const TableGeneric = wrapper.findComponent({ name: 'TableGeneric' })
-		const TableGenericLowWidth = wrapper.findComponent({ name: 'TableGenericLowWidth' })
 		const CalculatorComponent = wrapper.findComponent({ name: 'CalculatorComponent' })
 
 		expect(h6.text()).toBe(props.message)
-		expect(TableGeneric.exists()).not.toBe(true)
-		expect(TableGenericLowWidth.exists()).toBe(true)
-		expect(CalculatorComponent.exists()).toBe(true)
-	})
-
-	it('has the correct children: innerWidth = 1920', async () => {
-		window.innerWidth = 1920
-		await (wrapper.vm as unknown as { updateWidth(): Promise<void> }).updateWidth()
-
-		const TableGeneric = wrapper.findComponent({ name: 'TableGeneric' })
-		const TableGenericLowWidth = wrapper.findComponent({ name: 'TableGenericLowWidth' })
-
 		expect(TableGeneric.exists()).toBe(true)
-		expect(TableGenericLowWidth.exists()).not.toBe(true)
+		expect(CalculatorComponent.exists()).toBe(true)
 	})
 })
