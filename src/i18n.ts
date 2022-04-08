@@ -104,7 +104,7 @@ class I18n {
 	currentLocale: MessagesLocale
 	messages!: Messages
 
-	constructor(locale: MessagesLocale ='he') {
+	constructor(locale: MessagesLocale) {
 		this.currentLocale = locale
 		this.changeLocale(locale)
 	}
@@ -115,6 +115,7 @@ class I18n {
 
 	changeLocale(locale: MessagesLocale) {
 		this.currentLocale = locale
+		localStorage.setItem('locale', locale)
 		this.messages = messages[this.currentLocale]
 
 		document.documentElement.dir = this.t('_dir')
@@ -122,4 +123,10 @@ class I18n {
 	}
 }
 
-export const i18n = reactive(new I18n())
+/** @returns {MessagesLocale} Last used locale, defaults to 'he' */
+function getLocaleCookie(): MessagesLocale {
+	const locale = localStorage.getItem('locale') as MessagesLocale | null
+	return locale ?? 'he'
+}
+
+export const i18n = reactive(new I18n(getLocaleCookie()))
