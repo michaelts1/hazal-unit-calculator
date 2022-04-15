@@ -1,13 +1,16 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 import { i18n } from '../i18n'
-import type { Page } from '../types'
 
 export default defineComponent({
 	props: {
 		defaultPage: {
-			type: String as PropType<Page>,
+			type: String,
 			default: 'length',
+		},
+		pages: {
+			type: Array as PropType<string[]>,
+			required: true,
 		},
 	},
 
@@ -34,11 +37,12 @@ export default defineComponent({
 			class="form-select"
 			@change="onChange"
 		>
-			<option value="length">
-				{{ i18n.t('length') }}
-			</option>
-			<option value="volume">
-				{{ i18n.t('volume') }}
+			<option
+				v-for="page of pages"
+				:key="page"
+				:value="page"
+			>
+				{{ i18n.t(page) }}
 			</option>
 		</select>
 	</span>

@@ -21,7 +21,7 @@ export default defineComponent({
 		},
 		message: {
 			type: String,
-			required: true,
+			default: null,
 		},
 		units: {
 			type: Array as PropType<Unit[]>,
@@ -37,7 +37,9 @@ export default defineComponent({
 		:default-units="defaultUnits"
 	/>
 
-	<h6> {{ message }} </h6>
+	<h6 v-if="message">
+		{{ message }}
+	</h6>
 
 	<TableGeneric
 		:units="units.filter(unit => !unit.hidden)"

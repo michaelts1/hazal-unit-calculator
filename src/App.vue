@@ -1,9 +1,10 @@
 <script lang="ts">
-import type { Page, Ruler } from './types'
 import { defineComponent } from 'vue'
 import { i18n } from './i18n'
 import PageLength from './components/PageLength.vue'
 import PageVolume from './components/PageVolume.vue'
+import PageWeight from './components/PageWeight.vue'
+import type { Ruler } from './types'
 import SelectPage from './components/SelectPage.vue'
 import SelectRabi from './components/SelectRabi.vue'
 
@@ -11,6 +12,7 @@ export default defineComponent({
 	components: {
 		PageLength,
 		PageVolume,
+		PageWeight,
 		SelectPage,
 		SelectRabi,
 	},
@@ -18,8 +20,9 @@ export default defineComponent({
 	data() {
 		return {
 			i18n,
-			page: 'length' as Page,
+			page: 'length',
 			ruler: 'grach' as Ruler,
+			pages: ['length', 'volume', 'weight'],
 		}
 	},
 
@@ -56,9 +59,11 @@ export default defineComponent({
 			<SelectPage
 				class="select"
 				:default-page="page"
+				:pages="pages"
 				@page-change="newPage => page = newPage"
 			/>
 			<SelectRabi
+				v-if="page !== 'weight'"
 				class="select"
 				:default-ruler="ruler"
 				@ruler-change="newRuler => ruler = newRuler"
@@ -73,6 +78,9 @@ export default defineComponent({
 			<PageVolume
 				v-else-if="page === 'volume'"
 				:ruler="ruler"
+			/>
+			<PageWeight
+				v-else-if="page === 'weight'"
 			/>
 		</article>
 	</div>

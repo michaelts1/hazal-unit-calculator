@@ -55,4 +55,16 @@ describe('App', () => {
 		await wrapper.find('#switch-lang').trigger('click')
 		expect(wrapper.vm.otherLang).toBe('he')
 	})
+
+	it('hides SelectRabi when page === weight', async () => {
+		await wrapper.setData({ page: 'weight' })
+
+		const PageLength = wrapper.findComponent({ name: 'PageLength' })
+		const SelectRabi = wrapper.findComponent({ name: 'SelectRabi' })
+		const PageWeight = wrapper.findComponent({ name: 'PageWeight' })
+
+		expect(PageLength.exists()).toBe(false)
+		expect(PageWeight.exists()).toBe(true)
+		expect(SelectRabi.exists()).toBe(false)
+	})
 })

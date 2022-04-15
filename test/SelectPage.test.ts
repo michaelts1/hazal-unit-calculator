@@ -7,7 +7,11 @@ describe('Component SelectPage', () => {
 		expect(SelectPage).toBeTruthy()
 	})
 
-	const wrapper = mount(SelectPage)
+	const wrapper = mount(SelectPage, {
+		props: {
+			pages: ['length', 'volume'],
+		},
+	})
 
 	it('has a select field with the correct number of options', () => {
 		expect(wrapper.find('select').exists()).toBe(true)
