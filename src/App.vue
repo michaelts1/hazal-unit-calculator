@@ -1,6 +1,6 @@
 <script lang="ts">
+import { i18n, MessageName } from './i18n'
 import { defineComponent } from 'vue'
-import { i18n } from './i18n'
 import PageLength from './components/PageLength.vue'
 import PageVolume from './components/PageVolume.vue'
 import PageWeight from './components/PageWeight.vue'
@@ -22,7 +22,7 @@ export default defineComponent({
 			i18n,
 			page: 'length',
 			ruler: 'grach' as Ruler,
-			pages: ['length', 'volume', 'weight'],
+			pages: ['length', 'volume', 'weight'] as MessageName[],
 		}
 	},
 

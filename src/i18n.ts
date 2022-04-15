@@ -130,7 +130,7 @@ const messages = {
 
 type MessagesLocale = keyof typeof messages
 type Messages = typeof messages[MessagesLocale]
-type MessageName = keyof Messages
+export type MessageName = keyof Messages
 
 class I18n {
 	currentLocale: MessagesLocale

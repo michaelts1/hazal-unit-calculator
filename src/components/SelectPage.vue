@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { i18n } from '../i18n'
+import { i18n, MessageName } from '../i18n'
 
 export default defineComponent({
 	props: {
@@ -9,7 +9,7 @@ export default defineComponent({
 			default: 'length',
 		},
 		pages: {
-			type: Array as PropType<string[]>,
+			type: Array as PropType<MessageName[]>,
 			required: true,
 		},
 	},
