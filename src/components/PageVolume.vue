@@ -36,7 +36,8 @@ export default defineComponent({
 			const peras    = roundNum(3 * beitza)
 			const log      = roundNum(6 * beitza)
 			const kortov   = roundNum(1/64 * log)
-			const litra    = roundNum(0.5 * log)
+			/** @todo Decide what is the value of litra and re-enable it */
+			//const litra    = roundNum(0.5 * log)
 			const kav      = roundNum(24 * beitza)
 			const seah     = roundNum(6 * kav)
 			const eifa     = roundNum(3 * seah)
@@ -51,7 +52,7 @@ export default defineComponent({
 				{ hidden: false, id: 'zait', name: i18n.t('zait'), value: zait },
 				{ hidden: false, id: 'beitza', name: i18n.t('beitza'), value: beitza },
 				{ hidden: false, id: 'peras', name: i18n.t('peras'), value: peras },
-				{ hidden: false, id: 'litra', name: i18n.t('litra'), value: litra },
+				//{ hidden: false, id: 'litra', name: i18n.t('litra'), value: litra },
 				{ hidden: false, id: 'log', name: i18n.t('log'), value: log },
 				{ hidden: false, id: 'kav', name: i18n.t('kav'), value: kav },
 				{ hidden: false, id: 'seah', name: i18n.t('seah'), value: seah },
