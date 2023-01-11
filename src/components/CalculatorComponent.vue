@@ -87,21 +87,23 @@ export default defineComponent({
 <template>
 	<div class="wrapper-row calculator">
 		<div class="wrapper-column">
-			<h5> {{ i18n.t('input') }} </h5>
-			<div>
-				<InputAmount
-					class="form-control form-control-sm"
-					size="1"
-					:value="input.value"
-					@value-change="inputValueChanged"
-				/>
-				<SelectUnit
-					class="form-select"
-					:units="units"
-					:selected-unit="input.unit"
-					@value-change="newUnit => InputUnitChanged(newUnit)"
-				/>
-			</div>
+			<label>
+				<h5> {{ i18n.t('input') }} </h5>
+				<div>
+					<InputAmount
+						class="form-control form-control-sm"
+						size="1"
+						:value="input.value"
+						@value-change="inputValueChanged"
+					/>
+					<SelectUnit
+						class="form-select"
+						:units="units"
+						:selected-unit="input.unit"
+						@value-change="newUnit => InputUnitChanged(newUnit)"
+					/>
+				</div>
+			</label>
 		</div>
 
 		<div class="wrapper-column">
@@ -113,26 +115,31 @@ export default defineComponent({
 				:aria-label="i18n.t('switchInputOutput')"
 				@click="swapInputOutput"
 			>
-				<img src="/swap.svg">
+				<img
+					src="/swap.svg"
+					:alt="i18n.t('switchInputOutput')"
+				>
 			</button>
 		</div>
 
 		<div class="wrapper-column">
-			<h5> {{ i18n.t('output') }} </h5>
-			<div>
-				<InputAmount
-					class="form-control form-control-sm"
-					size="1"
-					:disabled="true"
-					:value="output.value"
-				/>
-				<SelectUnit
-					class="form-select"
-					:units="units"
-					:selected-unit="output.unit"
-					@value-change="newUnit => OutputUnitChanged(newUnit)"
-				/>
-			</div>
+			<label>
+				<h5> {{ i18n.t('output') }} </h5>
+				<div>
+					<InputAmount
+						class="form-control form-control-sm"
+						size="1"
+						:disabled="true"
+						:value="output.value"
+					/>
+					<SelectUnit
+						class="form-select"
+						:units="units"
+						:selected-unit="output.unit"
+						@value-change="newUnit => OutputUnitChanged(newUnit)"
+					/>
+				</div>
+			</label>
 		</div>
 	</div>
 </template>
