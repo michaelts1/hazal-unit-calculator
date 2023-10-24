@@ -1,6 +1,6 @@
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
-import { i18n, MessageName } from '../i18n'
+import { MessageName, i18n } from '../i18n'
+import { PropType, defineComponent } from 'vue'
 
 export default defineComponent({
 	props: {

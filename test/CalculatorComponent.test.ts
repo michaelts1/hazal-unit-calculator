@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import CalculatorComponent from '../src/components/CalculatorComponent.vue'
 import { mount } from '@vue/test-utils'
+import CalculatorComponent from '../src/components/CalculatorComponent.vue'
 import type { Unit } from '../src/types'
 
 interface Field {

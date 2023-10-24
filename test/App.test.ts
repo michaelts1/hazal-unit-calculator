@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
+import { mount } from '@vue/test-utils'
 import App from '../src/App.vue'
-import {  mount } from '@vue/test-utils'
 
 describe('App', () => {
 	it('exists', () => {

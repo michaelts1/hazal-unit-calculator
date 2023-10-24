@@ -1,8 +1,8 @@
 <script lang="ts">
-import type { DefaultUnits, Unit } from '../types'
-import { defineComponent, PropType } from 'vue'
+import { PropType, defineComponent } from 'vue'
 import CalculatorComponent from './CalculatorComponent.vue'
 import TableGeneric from './TableGeneric.vue'
+import type { DefaultUnits, Unit } from '../types'
 
 export default defineComponent({
 	components: {

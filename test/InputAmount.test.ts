@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import InputAmount from '../src/components/InputAmount.vue'
 import { mount } from '@vue/test-utils'
 import { setInvalidValue } from './test-utils'
+import InputAmount from '../src/components/InputAmount.vue'
 
 describe('Component InputAmount, enabled', () => {
 	it('exists', () => {

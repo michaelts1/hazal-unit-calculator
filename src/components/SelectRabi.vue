@@ -1,6 +1,6 @@
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
 import { i18n } from '../i18n'
+import { PropType, defineComponent } from 'vue'
 import type { Ruler } from '../types'
 
 export default defineComponent({

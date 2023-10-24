@@ -1,5 +1,5 @@
-import type { DOMWrapper } from '@vue/test-utils'
 import { vi } from 'vitest'
+import type { DOMWrapper } from '@vue/test-utils'
 
 /**
 	A Workaround for `DomWrapper.setValue()` together with `vi.useFakeTimers()`.

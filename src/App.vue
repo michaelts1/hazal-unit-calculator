@@ -1,12 +1,12 @@
 <script lang="ts">
-import { i18n, MessageName } from './i18n'
 import { defineComponent } from 'vue'
+import { MessageName, i18n } from './i18n'
 import PageLength from './components/PageLength.vue'
 import PageVolume from './components/PageVolume.vue'
 import PageWeight from './components/PageWeight.vue'
-import type { Ruler } from './types'
 import SelectPage from './components/SelectPage.vue'
 import SelectRabi from './components/SelectRabi.vue'
+import type { Ruler } from './types'
 
 export default defineComponent({
 	components: {

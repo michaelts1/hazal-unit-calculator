@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import type { Ruler } from '../src/types'
 import SelectRabi from '../src/components/SelectRabi.vue'
+import type { Ruler } from '../src/types'
 
 describe('Component SelectRabi', () => {
 	it('exists', () => {

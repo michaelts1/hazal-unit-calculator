@@ -1,10 +1,10 @@
 <script lang="ts">
-import type { DefaultUnits, Unit } from '../types'
-import { defineComponent, PropType } from 'vue'
 import { i18n } from '../i18n'
-import InputAmount from './InputAmount.vue'
+import { PropType, defineComponent } from 'vue'
 import { roundNum } from '../helpers'
+import InputAmount from './InputAmount.vue'
 import SelectUnit from './SelectUnit.vue'
+import type { DefaultUnits, Unit } from '../types'
 
 export default defineComponent({
 	components: {

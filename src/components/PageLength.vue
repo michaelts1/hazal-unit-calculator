@@ -1,9 +1,9 @@
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
-import type { Ruler, Unit } from '../types'
 import { i18n } from '../i18n'
-import PageGeneric from './PageGeneric.vue'
+import { PropType, defineComponent } from 'vue'
 import { roundNum } from '../helpers'
+import PageGeneric from './PageGeneric.vue'
+import type { Ruler, Unit } from '../types'
 
 export default defineComponent({
 	components: {
