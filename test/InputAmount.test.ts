@@ -1,7 +1,7 @@
-import { afterEach, describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import InputAmount from '../src/components/InputAmount.vue'
 import { mount } from '@vue/test-utils'
-import { sleep } from './test-utils'
+import { setInvalidValue } from './test-utils'
 
 describe('Component InputAmount, enabled', () => {
 	it('exists', () => {
@@ -10,9 +10,12 @@ describe('Component InputAmount, enabled', () => {
 
 	let wrapper = mount(InputAmount, { props: { value: 0 } })
 	let input = wrapper.find('input:not([disabled])')
-	afterEach(() => { // Reset component
+	beforeEach(() => { // Reset component
+		vi.useFakeTimers()
 		wrapper = mount(InputAmount, { props: { value: 0 } })
 		input = wrapper.find('input:not([disabled])')
+
+		return vi.useRealTimers // AfterEach function
 	})
 
 	it('has an active input field with correct classes', () => {
@@ -21,28 +24,37 @@ describe('Component InputAmount, enabled', () => {
 		expect(input.classes()).not.contain('invalid')
 	})
 
-	it('reacts only to valid value changes', async () => {
+	it('reacts to valid value changes', async () => {
 		// Yes, dom value is always a string
 		expect(wrapper.vm.domValue).toBe('0')
 
 		await input.setValue(1)
-		await sleep(500)
+		vi.runOnlyPendingTimers()
 		expect(wrapper.vm.domValue).toBe('1')
 		expect(input.classes()).not.contain('invalid')
 
-		await input.setValue('invalid value')
-		await sleep(500)
+		// Should be registered as input events
+		const inputEvents = wrapper.emitted('input')
+		expect(inputEvents).toHaveLength(1)
+
+		// Should be registered as value-change event
+		const valueChangeEvents = wrapper.emitted('value-change')
+		expect(valueChangeEvents).toEqual([ [1] ])
+	})
+
+	it('doesn\'t react to invalid value changes', async () => {
+		await setInvalidValue(input, 'invalid value')
+		vi.runOnlyPendingTimers()
 		expect(wrapper.vm.domValue).toBe('invalid value')
 		expect(input.classes()).contain('invalid')
 
-		// Both changes should be registered as input events
+		// Should be registered as input events
 		const inputEvents = wrapper.emitted('input')
-		expect(inputEvents).toHaveLength(2)
+		expect(inputEvents).toHaveLength(2) // Two event were emitted due to `setInvalidValue`
 
-		// Only the valid change should be registered as value-change event
-		const valueChangeEvents = wrapper.emitted('value-change') as unknown[][]
-		expect(valueChangeEvents).toHaveLength(1)
-		expect(valueChangeEvents[0]).toEqual([ 1 ])
+		// Shouldn't be registered as value-change event
+		const valueChangeEvents = wrapper.emitted('value-change')
+		expect(valueChangeEvents).toBe(undefined)
 	})
 
 	it('updates domValue when value prop changes', async () => {
@@ -51,14 +63,14 @@ describe('Component InputAmount, enabled', () => {
 	})
 
 	it('should wait for the user to complete a simple fraction', async () => {
-		await input.setValue('5/')
-		await sleep(500)
+		await setInvalidValue(input, '5/')
+		vi.runOnlyPendingTimers()
 		expect(wrapper.vm.domValue).toBe('5/')
 		expect(input.classes()).not.contain('invalid')
 
 		await input.setValue('5/2')
-		await sleep(500)
-		const valueChangeEvents = wrapper.emitted('value-change') as unknown[][]
+		vi.runOnlyPendingTimers()
+		const valueChangeEvents = wrapper.emitted('value-change')
 		expect(valueChangeEvents).toEqual([ [2.5] ])
 	})
 })

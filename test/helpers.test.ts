@@ -1,6 +1,5 @@
 import { debounce, roundNum } from '../src/helpers'
-import { describe, expect, it } from 'vitest'
-import { sleep } from './test-utils'
+import { describe, expect, it, vi } from 'vitest'
 
 describe('roundNum', () => {
 	it('rounds numbers to 10 fractional digits', () => {
@@ -14,18 +13,22 @@ describe('roundNum', () => {
 
 describe('debounce', () => {
 	it ('should only trigger after enough time has passed', async () => {
+		vi.useFakeTimers()
+
 		let hasFnTriggered = false
 		const debouncedFn = debounce(() => hasFnTriggered = true, 5)
 
 		debouncedFn()
-		await sleep(2)
+		vi.advanceTimersByTime(2)
 		expect(hasFnTriggered).toBe(false)
 
 		debouncedFn()
-		await sleep(4)
+		vi.advanceTimersByTime(4)
 		expect(hasFnTriggered).toBe(false)
 
-		await sleep(1) // Totaling up to 5 ms since last triggered
+		vi.advanceTimersByTime(1) // Totaling up to 5 ms since last triggered
 		expect(hasFnTriggered).toBe(true)
+
+		vi.useRealTimers()
 	})
 })
