@@ -3,6 +3,8 @@ import { debounce, roundNum } from '../helpers'
 import { defineComponent } from 'vue'
 import { i18n } from '../i18n'
 
+class InvalidNumber extends TypeError {}
+
 export default defineComponent({
 	props: {
 		value: {
@@ -77,19 +79,13 @@ export default defineComponent({
 			this.valid = msg === ''
 		},
 
-		/** Checks the validity of the input field and emits the new value to the parent component */
-		inputValueChanged(event: Event) {
-			const target = event.target as HTMLInputElement
-			this.domValue = target.value
-
+		/** Parses and returns the new value based on the DOM string */
+		processValue() {
 			const valueStr = this.domValue.replace(/,/g, '')
 
 			/* Don't invalidate yet - the user might enter a
 				digit, making the input a valid simple fraction */
-			if (`${parseFloat(valueStr)}/` === valueStr) {
-				console.log('Ignoring incomplete simple fraction')
-				return
-			}
+			if (`${parseFloat(valueStr)}/` === valueStr) return null
 
 			const fractionMatchArray = valueStr.match(/([\d.]+) ?\/ ?([\d.]+)/)
 			let value = +valueStr
@@ -100,14 +96,33 @@ export default defineComponent({
 				value = roundNum(value, 5)
 			}
 
-			if (!Number.isFinite(value)) {
-				this.changeValidity(target, i18n.t('invalidNumber'))
-				console.log('Ignoring invalid number input')
-				return
-			}
+			if (!Number.isFinite(value)) throw new InvalidNumber('Invalid number input')
 
-			this.$emit('value-change', value)
-			this.changeValidity(target, '')
+			return value
+		},
+
+		/** Checks the validity of the input field and emits the new value to the parent component */
+		inputValueChanged(event: Event) {
+			const target = event.target as HTMLInputElement
+			this.domValue = target.value
+
+			try {
+				const value = this.processValue()
+				if (value === null) {
+					console.log('Ignoring incomplete input')
+					return
+				}
+
+				this.$emit('value-change', value)
+				this.changeValidity(target, '')
+			} catch (err) {
+				if (err instanceof InvalidNumber) {
+					this.changeValidity(target, i18n.t('invalidNumber'))
+					console.log(err.message)
+				} else {
+					throw err
+				}
+			}
 		},
 	},
 })
