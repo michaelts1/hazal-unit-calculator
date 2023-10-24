@@ -84,9 +84,12 @@ export default defineComponent({
 
 			const valueStr = this.domValue.replace(/,/g, '')
 
-			/* The condition here basically means "The value is `${number}/`. If this is the case, don't
-				invalidate yet - the user might enter a digit, making the input a valid simple fraction */
-			if (String(parseFloat(valueStr)) + '/' === valueStr) return
+			/* Don't invalidate yet - the user might enter a
+				digit, making the input a valid simple fraction */
+			if (`${parseFloat(valueStr)}/` === valueStr) {
+				console.log('Ignoring incomplete simple fraction')
+				return
+			}
 
 			const fractionMatchArray = valueStr.match(/([\d.]+) ?\/ ?([\d.]+)/)
 			let value = +valueStr
