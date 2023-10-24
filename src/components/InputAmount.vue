@@ -1,4 +1,5 @@
 <script lang="ts">
+import { debounce, roundNum } from '../helpers'
 import { defineComponent } from 'vue'
 import { i18n } from '../i18n'
 
@@ -17,12 +18,16 @@ export default defineComponent({
 
 	data() {
 		return {
-			valid: true,
 			domValue: String(this.value),
+			valid: true,
 		}
 	},
 
 	computed: {
+		debouncedInputValueChanged() {
+			return debounce(this.inputValueChanged, 500)
+		},
+
 		disabledValue() {
 			let digits = 10
 			if (this.value > 1) {
@@ -77,7 +82,21 @@ export default defineComponent({
 			const target = event.target as HTMLInputElement
 			this.domValue = target.value
 
-			const value = +target.value.replace(/,/g, '')
+			const valueStr = this.domValue.replace(/,/g, '')
+
+			/* The condition here basically means "The value is `${number}/`. If this is the case, don't
+				invalidate yet - the user might enter a digit, making the input a valid simple fraction */
+			if (String(parseFloat(valueStr)) + '/' === valueStr) return
+
+			const fractionMatchArray = valueStr.match(/([\d.]+) ?\/ ?([\d.]+)/)
+			let value = +valueStr
+
+			if (fractionMatchArray) {
+				// Handle simple fractions
+				value = +fractionMatchArray[1] / +fractionMatchArray[2]
+				value = roundNum(value, 5)
+			}
+
 			if (!Number.isFinite(value)) {
 				this.changeValidity(target, i18n.t('invalidNumber'))
 				console.log('Ignoring invalid number input')
@@ -96,6 +115,6 @@ export default defineComponent({
 		:class="{ 'input-amount': true, 'invalid': !valid }"
 		:disabled="disabled"
 		:value="usedValue"
-		@input="inputValueChanged"
+		@input="debouncedInputValueChanged"
 	>
 </template>

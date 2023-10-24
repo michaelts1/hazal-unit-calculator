@@ -1,19 +1,19 @@
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it } from 'vitest'
 import InputAmount from '../src/components/InputAmount.vue'
 import { mount } from '@vue/test-utils'
+import { sleep } from './test-utils'
 
 describe('Component InputAmount, enabled', () => {
 	it('exists', () => {
 		expect(InputAmount).toBeTruthy()
 	})
 
-	const wrapper = mount(InputAmount, {
-		props: {
-			value: 0,
-		},
+	let wrapper = mount(InputAmount, { props: { value: 0 } })
+	let input = wrapper.find('input:not([disabled])')
+	afterEach(() => { // Reset component
+		wrapper = mount(InputAmount, { props: { value: 0 } })
+		input = wrapper.find('input:not([disabled])')
 	})
-
-	const input = wrapper.find('input:not([disabled])')
 
 	it('has an active input field with correct classes', () => {
 		expect(input.exists()).toBe(true)
@@ -26,10 +26,12 @@ describe('Component InputAmount, enabled', () => {
 		expect(wrapper.vm.domValue).toBe('0')
 
 		await input.setValue(1)
+		await sleep(500)
 		expect(wrapper.vm.domValue).toBe('1')
 		expect(input.classes()).not.contain('invalid')
 
 		await input.setValue('invalid value')
+		await sleep(500)
 		expect(wrapper.vm.domValue).toBe('invalid value')
 		expect(input.classes()).contain('invalid')
 
@@ -38,7 +40,7 @@ describe('Component InputAmount, enabled', () => {
 		expect(inputEvents).toHaveLength(2)
 
 		// Only the valid change should be registered as value-change event
-		const valueChangeEvents = wrapper.emitted('value-change') as unknown[]
+		const valueChangeEvents = wrapper.emitted('value-change') as unknown[][]
 		expect(valueChangeEvents).toHaveLength(1)
 		expect(valueChangeEvents[0]).toEqual([ 1 ])
 	})
@@ -46,6 +48,18 @@ describe('Component InputAmount, enabled', () => {
 	it('updates domValue when value prop changes', async () => {
 		await wrapper.setProps({ value: 5 })
 		expect(wrapper.vm.domValue).toBe('5')
+	})
+
+	it('should wait for the user to complete a simple fraction', async () => {
+		await input.setValue('5/')
+		await sleep(500)
+		expect(wrapper.vm.domValue).toBe('5/')
+		expect(input.classes()).not.contain('invalid')
+
+		await input.setValue('5/2')
+		await sleep(500)
+		const valueChangeEvents = wrapper.emitted('value-change') as unknown[][]
+		expect(valueChangeEvents).toEqual([ [2.5] ])
 	})
 })
 
