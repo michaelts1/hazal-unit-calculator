@@ -28,7 +28,7 @@ export default defineComponent({
 			const zuz     = roundNum(6 * maeh)
 			const shekel  = roundNum(2 * zuz)
 			const sela  = roundNum(2 * shekel)
-			const darcon  = roundNum(2 * shekel)
+			const darcon  = roundNum(2 * sela)
 			const mane    = roundNum(12.5 * darcon)
 			const kikar   = roundNum(3000 * shekel)
 
